@@ -120,7 +120,12 @@
   <div>
     <h3>How old would Van Gogh be?</h3>
     <?php
-  echo(time() - mktime(0,0,0,3,30,1983)); 
+    $time = time();
+    $vanGogh = mktime(0,0,0,3,30,1983);
+    $passedTime = $time - $vanGogh;
+  
+    echo $passedTime;
+    echo(date("Y-m-d", $t));
   ?>
   </div>
   
