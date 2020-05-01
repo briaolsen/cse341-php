@@ -116,14 +116,14 @@
   </div>
 
   <!-- How Long Ago -->
-  <div class="vg-birth">
+  <div class="card vg-birth">
     <h3>How long ago was Vincent Van Gogh born?</h3>
     <h4>
     <?php
     $date1 = date_create("1853-03-30");
     $date2 = date_create("today");
     $diff = date_diff($date1, $date2);
-    echo $diff->format("%y Years %m Month(s) %d Day(s)");
+    echo $diff->format("%y Years, %m Month(s), %d Day(s)");
     ?>
     </h4>
   </div>
