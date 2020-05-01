@@ -124,7 +124,7 @@
     $vanGogh = date_create("1853-03-30");
     $diff = date_diff($today, $vanGogh);
 
-    echo $diff;
+    echo $diff->format("%R%a days");
   ?>
   </div>
   
