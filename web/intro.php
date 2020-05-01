@@ -121,7 +121,7 @@
     $date1 = date_create("1853-03-30");
     $date2 = date_create("today");
     $diff = date_diff($date1, $date2);
-    echo $diff->format("%R%a days");
+    echo $diff->format("%y Years %m Months %d Days");
     ?>
   </div>
 
