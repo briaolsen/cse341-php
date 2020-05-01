@@ -122,7 +122,7 @@
     <?php
     $today = getdate();
     $vanGogh = date_create("1853-03-30");
-    $diff = date_diff($today, $vanGogh);
+    $diff = date_diff($vanGogh, $today);
 
     echo $diff->format("%R%a days");
   ?>
