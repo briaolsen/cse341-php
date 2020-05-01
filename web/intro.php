@@ -117,9 +117,13 @@
     </div>
   </div>
 
-  <?php
+  <div>
+    <h3>How old would Van Gogh be?</h3>
+    <?php
   echo(time() - mktime(0,0,0,3,30,1983)); 
   ?>
+  </div>
+  
 
 
   <!-- jQuery, Popper.js, Bootstrap JS -->
