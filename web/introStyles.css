@@ -36,3 +36,11 @@
 .list-group {
   margin: 50px;
 }
+
+.vg-birth {
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  margin: 30px;
+}
