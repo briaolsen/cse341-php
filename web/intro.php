@@ -125,7 +125,7 @@
     $passedTime = $time - $vanGogh;
   
     echo $passedTime;
-    echo(date("Y-m-d", $t));
+    echo(date("Y-m-d", $passedTime));
   ?>
   </div>
   
