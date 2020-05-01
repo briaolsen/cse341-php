@@ -117,6 +117,10 @@
     </div>
   </div>
 
+  <?php
+  echo(time() - mktime(0,0,0,3,30,1983)); 
+  ?>
+
 
   <!-- jQuery, Popper.js, Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
