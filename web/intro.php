@@ -119,7 +119,7 @@
     <h3>How old would Van Gogh be?</h3>
     <?php
     $date1 = date_create("1853-03-30");
-    $date2 = getdate();
+    $date2 = date_create("today");
     $diff = date_diff($date1, $date2);
     echo $diff->format("%R%a days");
     ?>
