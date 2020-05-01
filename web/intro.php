@@ -121,12 +121,10 @@
     <h3>How old would Van Gogh be?</h3>
     <?php
     $today = getdate();
-    $vanGogh = date_create(1853-03-30);
-    
-    $timepassed = abs(strtotime($today) - strtotime($vanGogh));
+    $vanGogh = date_create("1853-03-30");
+    $diff = date_diff($today, $vanGogh);
 
-    echo $timepassed;
-    echo(date("Y-m-d", $timepassed));
+    echo $diff;
   ?>
   </div>
   
