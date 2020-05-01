@@ -50,10 +50,21 @@
     </div>
   </div>
 
+  <!-- Quote -->
+  <div class="card quote text-center">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>A great fire burns within me, but no one stops to warn themselves at it, and passers-by only see a whisp of smoke.</p>
+        <footer class="text-muted">- Vincent Van Gogh -</footer>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- Gallery -->
   <div class="container">
     <div class="card-deck">
 
-
+      <!-- Starry Night -->
       <div class="card" style="width: 20rem;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" class="card-img-top" alt="Starry Night, June 1889">
         <div class="card-body d-flex flex-column">
@@ -64,8 +75,7 @@
         </div>
       </div>
 
-
-
+      <!-- Portrait Carousel -->
       <div class="card" style="width: 20rem;">
         <div id="portraitCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
@@ -91,8 +101,7 @@
         </div>
       </div>
 
-
-
+      <!-- Irises -->
       <div class="card" style="width: 20rem;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Irises-Vincent_van_Gogh.jpg/1280px-Irises-Vincent_van_Gogh.jpg" class="card-img-top" alt="Irises, May 1889">
         <div class="card-body d-flex flex-column">
@@ -106,26 +115,18 @@
     </div>
   </div>
 
-  <div class="card quote text-center">
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <p>A great fire burns within me, but no one stops to warn themselves at it, and passers-by only see a whisp of smoke.</p>
-        <footer class="text-muted">- Vincent Van Gogh -</footer>
-      </blockquote>
-    </div>
-  </div>
-
-  <div>
-    <h3>How old would Van Gogh be?</h3>
+  <!-- How Long Ago -->
+  <div class="vg-birth">
+    <h3>How long ago was Vincent Van Gogh born?</h3>
+    <h4>
     <?php
     $date1 = date_create("1853-03-30");
     $date2 = date_create("today");
     $diff = date_diff($date1, $date2);
-    echo $diff->format("%y Years %m Months %d Days");
+    echo $diff->format("%y Years %m Month(s) %d Day(s)");
     ?>
+    </h4>
   </div>
-
-
 
   <!-- jQuery, Popper.js, Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
