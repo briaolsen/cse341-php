@@ -16,6 +16,7 @@
 
 <body class="bg-dark">
 
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
     <a class="navbar-brand" href="intro.html">Briana Olsen</a>
@@ -23,22 +24,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Navigation Links -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-
         <li class="nav-item active">
           <a class="nav-link" href="intro.html">Home</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="assignments.html">Assignments</a>
         </li>
-
       </ul>
     </div>
 
   </nav>
 
+  <!-- Jumbotron -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-3 font-weight-bold font-white satisfy">Vincent Van Gogh</h1>
@@ -79,15 +79,19 @@
       <div class="card" style="width: 20rem;">
         <div id="portraitCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
+            <!-- Self Portrait with Pipe -->
             <div class="carousel-item active">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Vincent_van_Gogh_-_Self-portrait_with_pipe_-_Google_Art_Project.jpg/800px-Vincent_van_Gogh_-_Self-portrait_with_pipe_-_Google_Art_Project.jpg" class="d-block w-100" alt="Self Portrait with Pipe, 1886">
             </div>
+            <!-- Self Portrait with Straw Hat -->
             <div class="carousel-item">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Van_Gogh_Self-Portrait_with_Straw_Hat_1887-Detroit.jpg/800px-Van_Gogh_Self-Portrait_with_Straw_Hat_1887-Detroit.jpg" class="d-block w-100" alt="Self Portrait with Straw Hat, Summer 1887">
             </div>
+            <!-- Self-Portrait with Bandaged Ear -->
             <div class="carousel-item">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/VanGogh-self-portrait-with_bandaged_ear.jpg/800px-VanGogh-self-portrait-with_bandaged_ear.jpg" class="d-block w-100" alt="Self-Portrait with Bandaged Ear, Easel, and Japanese Print, January 1889">
             </div>
+            <!-- Self Portrait, Sept 1889 -->
             <div class="carousel-item">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg/800px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg" class="d-block w-100" alt="Self Portrait, September 1889">
             </div>
