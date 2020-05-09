@@ -1,0 +1,60 @@
+html {
+  height: 100%;
+}
+
+body {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+}
+
+#jumbo-img 
+{
+  height: 200px;
+}
+
+.cartButton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.cartContainer {
+  width: 50%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.cartContainer img {
+  width: 200px;
+}
+
+.reviewContainer {
+  width: 30%;
+  padding: 20px;
+  margin-right: 40px;
+}
+
+.formContainer {
+  margin: 20px;
+  padding: 20px;
+  width: 50%;
+}
+
+.full-height {
+  height:20px;
+}
+
+.dosis {
+  font-family: 'Dosis', sans-serif;
+}
+
+.galada {
+  font-family: 'Galada', cursive;
+}
+
+.courgette {
+  font-family: 'Courgette', cursive;
+}
+
+.cardo {
+  font-family: 'Cardo', serif;
+}
