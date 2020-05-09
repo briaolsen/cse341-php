@@ -124,7 +124,7 @@ if (!isset($_SESSION['cart'])) {
 
     <!-- JUMBOTRON -->
     <div class="jumbotron jumbotron-fluid px-5">
-      <img src="https://cdn.pixabay.com/photo/2018/04/23/14/38/adorable-3344414_960_720.jpg" class="float-left align-self-center mr-5" alt="Dog and Cat" id="jumbo-img"></img>
+      <img src="https://cdn.pixabay.com/photo/2018/04/23/14/38/adorable-3344414_960_720.jpg" class="float-left align-self-center mr-5" alt="Dog and Cat" id="jumbo-img">
       <h1 class="display-4 text-lg-left cardo">Pet Adoptions</h1>
       <p class="lead text-muted">Find your furever friend!</p>
       <p>Looking for a pet to keep you company while in quarantine? Adoption is the best option!</p>
