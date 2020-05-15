@@ -35,6 +35,6 @@ CREATE TABLE public.book
 	title VARCHAR(100) NOT NULL,
 	series_id INT REFERENCES public.series(id),
 	author_id INT NOT NULL REFERENCES public.author(id),
-	genre_id INT NOT NULL REFERENCES public.genre(id)
+	genre_id INT NOT NULL REFERENCES public.genre(id),
 	lexile_id INT NOT NULL REFERENCES public.lexile(id)
 );
