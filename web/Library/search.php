@@ -27,12 +27,12 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
 
 <body id="search-body">
 
-  <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/";
+  <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
   <div id="search-form">
 
-  <h1>Search for Book</h1>
+    <h1>Search for Book</h1>
 
     <form>
 
@@ -90,14 +90,15 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
       <button class="btn btn-dark" type="submit">Search</button>
     </form>
 
+  </div>
 
+  <div id="search-results">
     <?php
 
-    $statement = $db->prepare('SELECT title, lexile, genre FROM book FULL OUTER JOIN author ON book.author_id = author.id');
+    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, series.series_name, author.first_name, author.middle_name, author.last_name FROM book JOIN Series ON book.series_id = series.id');
     $statement->execute();
 
-    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-    {
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       $title = $row['title'];
       $lexile = $row['lexile'];
       $genre = $row['genre'];
