@@ -100,7 +100,7 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
     {
       $title = $row['title'];
       $lexile = $row['lexile'];
-      $genre = $genre['genre'];
+      $genre = $row['genre'];
 
       echo "<p>$title $lexile $genre</p>";
     }
