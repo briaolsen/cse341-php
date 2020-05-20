@@ -1,0 +1,35 @@
+#home-body {
+  background-image: url("https://cdn.pixabay.com/photo/2015/06/02/12/59/narrative-794978_960_720.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#search-body {
+  background-color: rgb(240, 240, 216);
+}
+
+.bg-orange {
+  background-color: #34170D;
+}
+
+#quote {
+  text-align: center;
+  margin: 7%;
+  font-weight: bold;
+  color: rgb(26, 12, 7);
+  text-shadow: white 0px 0px 15px;
+}
+
+#home-quote {
+  font-size: 4vw;
+}
+
+#seuss {
+  font-size: 3vw;
+}
+
+#search-form {
+  padding: 5%;
+}
