@@ -102,6 +102,10 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
       $title = $row['title'];
       $lexile = $row['lexile'];
       $genre = $row['genre'];
+      $series_name = $row['series_name'];
+      $first_name = $row['first_name'];
+      $middle_name = $row['middle_name'];
+      $last_name = $row['last_name'];
 
 
       echo "<p>$title $lexile $genre</p>";
