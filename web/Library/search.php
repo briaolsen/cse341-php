@@ -95,13 +95,14 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
   <div id="search-results">
     <?php
 
-    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, series.series_name, author.first_name, author.middle_name, author.last_name FROM book JOIN Series ON book.series_id = series.id');
+    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, series.series_name, author.first_name, author.middle_name, author.last_name FROM book JOIN series ON book.series_id = series.id JOIN author ON book.author_id = author.id');
     $statement->execute();
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       $title = $row['title'];
       $lexile = $row['lexile'];
       $genre = $row['genre'];
+
 
       echo "<p>$title $lexile $genre</p>";
     }
