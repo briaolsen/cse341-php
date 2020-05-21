@@ -4,7 +4,7 @@ require_once "database.php";
 $db = get_db();
 
 
-$currentPage = "search";
+$currentPage = "library";
 
 $genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
@@ -33,31 +33,43 @@ $genres = array("realistic fiction", "historical fiction", "science fiction", "f
   include($IPATH . "navbar.php"); ?>
 
   <h1>Olsen Family Library</h1>
-
-  <?php
-
-  $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
-  $statement->execute();
-
-  while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-    $title = $row['title'];
-    $lexile = $row['lexile'];
-    $genre = $row['genre'];
-    $first_name = $row['first_name'];
-    $middle_name = $row['middle_name'];
-    $last_name = $row['last_name'];
-    //$series_name = $row['series_name'];
+  
+  <div id="search-results">
+    <table class="table table-striped results-table">
+      <thead>
+        <tr>
+          <th scope="col">Book Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Lexile</th>
+        </tr>
+      </thead>
 
 
-    echo "<tr>
+      <?php
+
+      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
+      $statement->execute();
+
+      while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $title = $row['title'];
+        $lexile = $row['lexile'];
+        $genre = $row['genre'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        //$series_name = $row['series_name'];
+
+
+        echo "<tr>
               <td>$title</td>
               <td>$first_name $middle_name $last_name </td>
               <td>$genre </td>
               <td>$lexile </td>
            </tr>";
-  }
-  ?>
-  </table>
+      }
+      ?>
+    </table>
   </div>
 
 

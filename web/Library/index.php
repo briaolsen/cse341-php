@@ -21,13 +21,13 @@ $currentPage = "home";
 
 <body id="home-body">
 
-  <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/";
+  <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
   <div id="quote">
 
-   <p id="home-quote">The more that you read, the more things you will know. The more that you learn, the more places you'll go.</p>
-   <p id="seuss" class="lead">Dr. Seuss</p>
+    <p id="home-quote">The more that you read, the more things you will know. The more that you learn, the more places you'll go.</p>
+    <p id="seuss" class="lead">Dr. Seuss</p>
 
 
   </div>
