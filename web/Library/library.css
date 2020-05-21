@@ -54,7 +54,7 @@
   margin-top: 5px;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 768px) {
   .results-table {
     width: 100%;
   }
