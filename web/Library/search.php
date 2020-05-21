@@ -6,7 +6,7 @@ $db = get_db();
 
 $currentPage = "search";
 
-$genres = array("realistic fiction","historical fiction",  "fantasy", "science fiction", "dystopian", "mystery", "horror", "thriller", "educational");
+$genres = array("realistic fiction", "historical fiction",  "fantasy", "science fiction", "dystopian", "mystery", "horror", "thriller", "educational");
 
 ?>
 
@@ -32,32 +32,33 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
 
   <div id="search-form">
 
-    
+
 
     <div class="row">
-    <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid"></div>
+      <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid"></div>
 
-    <div class="col-md-6">
-    <h1 class="row">Search for Book</h1>
-    <form class="row">
+      <div class="col-md-6">
+        <h1 class="row">Search for Book</h1>
+        <form class="row">
 
-      <div class="form-row">
-        <div class="col">
-          <label for="firstName">Author First Name</label>
-          <input type="text" class="form-control" id="firstName" name="firstName">
-        </div>
-        <div class="col">
-          <label for="lastName">Author Last Name</label>
-          <input type="text" class="form-control" id="lastName" name="lastName">
-        </div>
-      </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="firstName">Author First Name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName">
+            </div>
+            <div class="col">
+              <label for="lastName">Author Last Name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName">
+            </div>
+          </div>
 
-      <div class="form-row">
-        <div class="col">
-          <label for="bookTitle">Book Title</label>
-          <input type="text" class="form-control" id="bookTitle">
-        </div>
-      </div><!--
+          <div class="form-row">
+            <div class="col">
+              <label for="bookTitle">Book Title</label>
+              <input type="text" class="form-control" id="bookTitle">
+            </div>
+          </div>
+          <!--
       <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="series">Series</label>
@@ -65,78 +66,78 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
         </div>
       </div>-->
 
-      <div class="form-row">
-        <div class="col">
-          <label for="genre">Genre</label>
-          <select class="custom-select" id="genre" name="genre">
-            <option selected disabled value="">Choose...</option>
-            <?php foreach ($genres as $genre) : ?>
-              <option value="<?php echo str_replace(' ', '', $genre); ?>"><?php echo ucwords($genre); ?></option>
-            <?php endforeach; ?>
-          </select>
-        </div>
-        <div class="col">
-          <label for="lexile">Lexile</label>
-          <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10">
-        </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="genre">Genre</label>
+              <select class="custom-select" id="genre" name="genre">
+                <option selected disabled value="">Choose...</option>
+                <?php foreach ($genres as $genre) : ?>
+                  <option value="<?php echo str_replace(' ', '', $genre); ?>"><?php echo ucwords($genre); ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+            <div class="col">
+              <label for="lexile">Lexile</label>
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <label for="lexileMin">Lexile Range Min</label>
+              <input type="number" class="form-control" id="lexileMin" name="lexileMin" min="10" step="10">
+            </div>
+            <div class="col">
+              <label for="lexileMax">Lexile Range Max</label>
+              <input type="number" class="form-control" id="lexileMax" name="lexileMax" min="10" step="10">
+            </div>
+          </div>
+
+          <button class="btn btn-dark" type="submit">Search</button>
+
+        </form>
       </div>
 
-      <div class="form-row">
-        <div class="col">
-          <label for="lexileMin">Lexile Range Min</label>
-          <input type="number" class="form-control" id="lexileMin" name="lexileMin" min="10" step="10">
-        </div>
-        <div class="col">
-          <label for="lexileMax">Lexile Range Max</label>
-          <input type="number" class="form-control" id="lexileMax" name="lexileMax" min="10" step="10">
-        </div>
-      </div>
 
-      <button class="btn btn-dark" type="submit">Search</button>
-      </div>
-    </form>
-
-    
-    
     </div>
   </div>
 
   <div id="search-results">
-  <table class="table table-striped results-table">
-    <thead>
-      <tr>
-        <th scope="col">Book Title</th>
-        <th scope="col">Author</th>
-        <th scope="col">Genre</th>
-        <th scope="col">Lexile</th>
-      </tr>
-    </thead>
-
-    
-    <?php
-
-    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
-    $statement->execute();
-
-    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-      $title = $row['title'];
-      $lexile = $row['lexile'];
-      $genre = $row['genre'];
-      $first_name = $row['first_name'];
-      $middle_name = $row['middle_name'];
-      $last_name = $row['last_name'];
-      //$series_name = $row['series_name'];
+    <table class="table table-striped results-table">
+      <thead>
+        <tr>
+          <th scope="col">Book Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Lexile</th>
+        </tr>
+      </thead>
 
 
-      echo "<tr>
+      <?php
+
+      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
+      $statement->execute();
+
+      while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $title = $row['title'];
+        $lexile = $row['lexile'];
+        $genre = $row['genre'];
+        $first_name = $row['first_name'];
+        $middle_name = $row['middle_name'];
+        $last_name = $row['last_name'];
+        //$series_name = $row['series_name'];
+
+
+        echo "<tr>
               <td>$title</td>
               <td>$first_name $middle_name $last_name </td>
               <td>$genre </td>
               <td>$lexile </td>
            </tr>";
-    }
-    ?>
-  </table>
+      }
+      ?>
+    </table>
   </div>
 
 
