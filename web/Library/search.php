@@ -147,23 +147,25 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         <?php $result = current($results); ?>
       <?php
 
-      while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        $title = $row['title'];
-        $lexile = $row['lexile'];
-        $genre = $row['genre'];
-        $first_name = $row['first_name'];
-        $middle_name = $row['middle_name'];
-        $last_name = $row['last_name'];
+     // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+      //  $title = $row['title'];
+      //  $lexile = $row['lexile'];
+       // $genre = $row['genre'];
+       // $first_name = $row['first_name'];
+        //$middle_name = $row['middle_name'];
+       // $last_name = $row['last_name'];
         //$series_name = $row['series_name'];
 
+        foreach($result as $result) : 
 
         echo "<tr>
-              <td>$title</td>
-              <td>$first_name $middle_name $last_name </td>
-              <td>$genre </td>
-              <td>$lexile </td>
+              <td>" . $result['title'] . "</td>
+              <td>" . $result['first_name'] . " " . $result['last_name'] ."</td>
+              <td>" . $result['genre'] . "</td>
+              <td>" . $result['lexile'] . "</td>
            </tr>";
-      }
+
+        endforeach;
       ?>
     </table>
   </div>
