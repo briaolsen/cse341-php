@@ -35,10 +35,10 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
 
 
     <div class="row">
-      <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid"></div>
+      <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
 
       <div class="col-md-6">
-        <h1>Search for Book</h1>
+        <h1>Search for a Book</h1>
         <form>
 
           <div class="form-row">
@@ -93,7 +93,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
             </div>
           </div>
 
-          <button class="form-row btn btn-dark" type="submit">Search</button>
+          <button class="btn btn-dark" type="submit">Search</button>
 
         </form>
       </div>
