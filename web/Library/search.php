@@ -164,6 +164,8 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         $results = current($results);
 
+        echo $results;
+
         if ($results && count($results) > 0) :
           foreach($results as $result) : 
 
