@@ -30,11 +30,11 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  <div>
+  <div id="search-form">
 
     <h1>Search for Book</h1>
 
-    <div class="row" id="search-form">
+    <div class="row">
     <form class="col-6">
 
       <div class="form-row">
@@ -91,7 +91,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
       <button class="btn btn-dark" type="submit">Search</button>
     </form>
 
-    <img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="col-6">
+    <img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="col-6 img-fluid">
     </div>
   </div>
 
