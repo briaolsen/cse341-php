@@ -38,18 +38,18 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
     <form class="col">
 
       <div class="form-row">
-        <div class="col-md-3 mb-1">
+        <div class="col">
           <label for="firstName">Author First Name</label>
           <input type="text" class="form-control" id="firstName" name="firstName">
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col">
           <label for="lastName">Author Last Name</label>
           <input type="text" class="form-control" id="lastName" name="lastName">
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col-md-6 mb-3">
+        <div class="col">
           <label for="bookTitle">Book Title</label>
           <input type="text" class="form-control" id="bookTitle">
         </div>
@@ -62,7 +62,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
       </div>-->
 
       <div class="form-row">
-        <div class="col-md-3 mb-3">
+        <div class="col">
           <label for="genre">Genre</label>
           <select class="custom-select" id="genre" name="genre">
             <option selected disabled value="">Choose...</option>
@@ -71,18 +71,18 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
             <?php endforeach; ?>
           </select>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col">
           <label for="lexile">Lexile</label>
           <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10">
         </div>
       </div>
 
       <div class="form-row">
-        <div class="col-md-3 mb-3">
+        <div class="col">
           <label for="lexileMin">Lexile Range Min</label>
           <input type="number" class="form-control" id="lexileMin" name="lexileMin" min="10" step="10">
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col">
           <label for="lexileMax">Lexile Range Max</label>
           <input type="number" class="form-control" id="lexileMax" name="lexileMax" min="10" step="10">
         </div>
