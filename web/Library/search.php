@@ -38,7 +38,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
       <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
 
       <div class="col-md-6">
-        <h1>Search for a Book</h1>
+        <h1 id="search-heading">Search for a Book</h1>
         <form>
 
           <div class="form-row top-5">

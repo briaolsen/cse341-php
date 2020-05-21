@@ -58,4 +58,8 @@
   .results-table {
     width: 100%;
   }
+
+  #search-heading {
+    text-align: center;
+  }
 }
