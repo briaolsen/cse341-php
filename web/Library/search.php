@@ -30,7 +30,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  <div id="search-form">
+  <div>
 
     <h1>Search for Book</h1>
 
