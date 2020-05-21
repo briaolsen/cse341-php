@@ -41,7 +41,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
         <h1>Search for a Book</h1>
         <form>
 
-          <div class="form-row">
+          <div class="form-row top-5">
             <div class="col">
               <label for="firstName">Author First Name</label>
               <input type="text" class="form-control" id="firstName" name="firstName">
@@ -52,7 +52,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
             </div>
           </div>
 
-          <div class="form-row">
+          <div class="form-row top-5">
             <div class="col">
               <label for="bookTitle">Book Title</label>
               <input type="text" class="form-control" id="bookTitle">
@@ -66,7 +66,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
         </div>
       </div>-->
 
-          <div class="form-row">
+          <div class="form-row top-5">
             <div class="col">
               <label for="genre">Genre</label>
               <select class="custom-select" id="genre" name="genre">
@@ -82,7 +82,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
             </div>
           </div>
 
-          <div class="form-row">
+          <div class="form-row top-5">
             <div class="col">
               <label for="lexileMin">Lexile Range Min</label>
               <input type="number" class="form-control" id="lexileMin" name="lexileMin" min="10" step="10">
@@ -93,7 +93,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
             </div>
           </div>
 
-          <button class="btn btn-dark" type="submit">Search</button>
+          <button class="btn btn-dark top-5" type="submit">Search</button>
 
         </form>
       </div>
