@@ -93,7 +93,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
   </div>
 
   <div id="search-results">
-  <table class="table table-striped results-table">
+  <table class="table table-striped table-responsive">
     <thead>
       <tr>
         <th scope="col">Book Title</th>
