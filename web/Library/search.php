@@ -52,13 +52,13 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
           <label for="bookTitle">Book Title</label>
           <input type="text" class="form-control" id="bookTitle">
         </div>
-      </div>
+      </div><!--
       <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="series">Series</label>
           <input type="text" class="form-control" id="series">
         </div>
-      </div>
+      </div>-->
 
       <div class="form-row">
         <div class="col-md-3 mb-3">
@@ -93,11 +93,10 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
   </div>
 
   <div id="search-results">
-  <table class="table table-striped">
+  <table class="table table-striped results-table">
     <thead>
       <tr>
         <th scope="col">Book Title</th>
-        <th scope="col">Series</th>
         <th scope="col">Author</th>
         <th scope="col">Genre</th>
         <th scope="col">Lexile</th>

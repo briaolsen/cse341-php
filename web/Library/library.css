@@ -33,3 +33,12 @@
 #search-form {
   padding: 5%;
 }
+
+#search-results {
+  background-color: white;
+  padding: 5%;
+}
+
+.results-table {
+  width: 70%;
+}
