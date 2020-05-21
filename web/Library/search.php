@@ -164,16 +164,18 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         $results = current($results);
 
-        foreach($results as $result) : 
+        if ($results && count($results) > 0) :
+          foreach($results as $result) : 
 
-        echo "<tr>
-                <td>" . $result['title'] . "</td>
-                <td>" . $result['first_name'] . " " . $result['last_name'] ."</td>
-                <td>" . $result['genre'] . "</td>
-                <td>" . $result['lexile'] . "</td>
-              </tr>";
+            echo "<tr>
+                    <td>" . $result['title'] . "</td>
+                    <td>" . $result['first_name'] . " " . $result['last_name'] ."</td>
+                    <td>" . $result['genre'] . "</td>
+                    <td>" . $result['lexile'] . "</td>
+                  </tr>";
 
-        endforeach;
+          endforeach;
+        endif;
       ?>
     </table>
   </div>
