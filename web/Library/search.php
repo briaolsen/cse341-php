@@ -6,7 +6,7 @@ $db = get_db();
 
 $currentPage = "search";
 
-$genres = array("adventure", "fantasy", "historical fiction", "science fiction", "dystopian", "mystery", "horror", "thriller", "art");
+$genres = array("realistic fiction","historical fiction",  "fantasy", "science fiction", "dystopian", "mystery", "horror", "thriller", "educational");
 
 ?>
 
@@ -93,6 +93,17 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
   </div>
 
   <div id="search-results">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th scope="col">Book Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Lexile</th>
+      </tr>
+    </thead>
+
+    
     <?php
 
     $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, series.series_name, author.first_name, author.middle_name, author.last_name FROM book JOIN series ON book.series_id = series.id JOIN author ON book.author_id = author.id');
@@ -108,10 +119,15 @@ $genres = array("adventure", "fantasy", "historical fiction", "science fiction",
       $last_name = $row['last_name'];
 
 
-      echo "<p>$title $lexile $genre $series_name $first_name $middle_name $last_name</p>";
+      echo "<tr>
+              <td>$title</td>
+              <td>$first_name $middle_name $last_name </td>
+              <td>$genre </td>
+              <td>$lexile </td>
+           </tr>";
     }
     ?>
-
+  </table>
   </div>
 
 
