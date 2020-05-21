@@ -6,7 +6,35 @@ $db = get_db();
 
 $currentPage = "search";
 
-$genres = array("realistic fiction", "historical fiction",  "fantasy", "science fiction", "dystopian", "mystery", "horror", "thriller", "educational");
+$genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
+
+$query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
+$params = [];
+
+if (isset($_GET['title']) && !empty($_GET['title'])) {
+  $query  .= ' AND book.title = ?';
+  $params[] = filter_var( $_GET['title'], FILTER_SANITIZE_STRING);
+}
+if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
+  $query  .= ' AND author.first_name = ?';
+  $params[] = filter_var( $_GET['firstName'], FILTER_SANITIZE_STRING);
+}
+if (isset($_GET['lastName']) && !empty($_GET['lastName'])) {
+  $query  .= ' AND author.last_name = ?';
+  $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
+}
+if (isset($_GET['genre']) && !empty($_GET['genre'])) {
+  $query  .= ' AND book.genre = ?';
+  $params[] = filter_var( $_GET['genre'], FILTER_SANITIZE_STRING);
+}
+if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
+  $query  .= ' AND book.lexile = ?';
+  $params[] = filter_var( $_GET['lexile'], FILTER_SANITIZE_STRING);
+}
+
+$statement = $db->prepare( $query );
+$statement->execute( $params );
+$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -39,23 +67,24 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
 
       <div class="col-md-6">
         <h1 id="search-heading">Search for a Book</h1>
+
         <form>
 
           <div class="form-row top-5">
             <div class="col">
               <label for="firstName">Author First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName">
+              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_GET['firstName'])) ? $_GET['firstName'] : ''); ?>">
             </div>
             <div class="col">
               <label for="lastName">Author Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName">
+              <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo ( (isset($_GET['lastName'])) ? $_GET['lastName'] : ''); ?>">
             </div>
           </div>
 
           <div class="form-row top-5">
             <div class="col">
-              <label for="bookTitle">Book Title</label>
-              <input type="text" class="form-control" id="bookTitle">
+              <label for="title">Book Title</label>
+              <input type="text" class="form-control" id="title" name="title" value="<?php echo ( (isset($_GET['title'])) ? $_GET['title'] : ''); ?>">
             </div>
           </div>
           <!--
@@ -78,7 +107,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
             </div>
             <div class="col">
               <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10">
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_GET['lexile'])) ? $_GET['lexile'] : ''); ?>">
             </div>
           </div>
 
@@ -103,6 +132,7 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
   </div>
 
   <div id="search-results">
+    
     <table class="table table-striped results-table">
       <thead>
         <tr>
@@ -114,10 +144,8 @@ $genres = array("realistic fiction", "historical fiction",  "fantasy", "science 
       </thead>
 
 
+        <?php $result = current($results); ?>
       <?php
-
-      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
-      $statement->execute();
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
         $title = $row['title'];
