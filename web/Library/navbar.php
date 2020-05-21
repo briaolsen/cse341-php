@@ -11,6 +11,9 @@
           <li class="nav-item <?php if($currentPage == "home") echo "active";?>">
             <a class="nav-link" href="index.php">Home</a>
           </li>
+          <li class="nav-item <?php if($currentPage == "library") echo "active";?>">
+            <a class="nav-link" href="library.php">Library</a>
+          </li>
           <li class="nav-item <?php if($currentPage == "search") echo "active";?>">
             <a class="nav-link" href="search.php">Search</a>
           </li>
