@@ -8,20 +8,28 @@ $currentPage = "search";
 
 $genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
-$query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
+$query = 'SELECT * FROM book';
 $params = [];
+
+if (isset($_GET['firstName']) && !empty($_GET['firstName']) || isset($_GET['lastName']) && !empty($_GET['lastName'])) {
+  $query .= ' JOIN author ON book.author_id = author.id WHERE true';
+
+  if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
+    $query  .= ' AND author.first_name = ?';
+    $params[] = filter_var( $_GET['firstName'], FILTER_SANITIZE_STRING);
+  }
+  if (isset($_GET['lastName']) && !empty($_GET['lastName'])) {
+    $query  .= ' AND author.last_name = ?';
+    $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
+  }
+}
+else {
+  $query .= ' WHERE true';
+}
 
 if (isset($_GET['title']) && !empty($_GET['title'])) {
   $query  .= ' AND book.title = ?';
   $params[] = filter_var( $_GET['title'], FILTER_SANITIZE_STRING);
-}
-if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
-  $query  .= ' AND author.first_name = ?';
-  $params[] = filter_var( $_GET['firstName'], FILTER_SANITIZE_STRING);
-}
-if (isset($_GET['lastName']) && !empty($_GET['lastName'])) {
-  $query  .= ' AND author.last_name = ?';
-  $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['genre']) && !empty($_GET['genre'])) {
   $query  .= ' AND book.genre = ?';
@@ -159,11 +167,11 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach($result as $result) : 
 
         echo "<tr>
-              <td>" . $result['title'] . "</td>
-              <td>" . $result['first_name'] . " " . $result['last_name'] ."</td>
-              <td>" . $result['genre'] . "</td>
-              <td>" . $result['lexile'] . "</td>
-           </tr>";
+                <td>" . $result['title'] . "</td>
+                <td>" . $result['first_name'] . " " . $result['last_name'] ."</td>
+                <td>" . $result['genre'] . "</td>
+                <td>" . $result['lexile'] . "</td>
+              </tr>";
 
         endforeach;
       ?>
