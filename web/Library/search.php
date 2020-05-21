@@ -98,6 +98,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
       <tr>
       <th scope="col">Book Title</th>
       <th scope="col">Author</th>
+      <th scope="col">Series</th>
       <th scope="col">Genre</th>
       <th scope="col">Lexile</th>
       </tr>
