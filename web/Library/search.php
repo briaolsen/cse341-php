@@ -34,7 +34,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
 
     <h1>Search for Book</h1>
 
-    <div class="container">
+    <div class="row">
     <form class="col-6">
 
       <div class="form-row">
