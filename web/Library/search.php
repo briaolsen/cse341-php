@@ -151,8 +151,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         </tr>
       </thead>
 
-
-        <?php $result = current($results); ?>
       <?php
 
      // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -164,7 +162,9 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
        // $last_name = $row['last_name'];
         //$series_name = $row['series_name'];
 
-        foreach($result as $result) : 
+        $results = current($results);
+
+        foreach($results as $result) : 
 
         echo "<tr>
                 <td>" . $result['title'] . "</td>
