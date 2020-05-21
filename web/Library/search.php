@@ -96,28 +96,28 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
   <table class="table table-striped">
     <thead>
       <tr>
-      <th scope="col">Book Title</th>
-      <th scope="col">Author</th>
-      <th scope="col">Series</th>
-      <th scope="col">Genre</th>
-      <th scope="col">Lexile</th>
+        <th scope="col">Book Title</th>
+        <th scope="col">Series</th>
+        <th scope="col">Author</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Lexile</th>
       </tr>
     </thead>
 
     
     <?php
 
-    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, series.series_name, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id JOIN series ON book.series_id = series.id');
+    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name, series.series_name FROM book JOIN author ON book.author_id = author.id JOIN series ON book.series_id = series.id');
     $statement->execute();
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       $title = $row['title'];
       $lexile = $row['lexile'];
       $genre = $row['genre'];
-      $series_name = $row['series_name'];
       $first_name = $row['first_name'];
       $middle_name = $row['middle_name'];
       $last_name = $row['last_name'];
+      $series_name = $row['series_name'];
 
 
       echo "<tr>
