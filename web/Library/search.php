@@ -107,7 +107,7 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
     
     <?php
 
-    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name, series.series_name FROM book JOIN author ON book.author_id = author.id AND JOIN series ON author.id = series.author_id');
+    $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
     $statement->execute();
 
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -117,12 +117,11 @@ $genres = array("realistic fiction","historical fiction",  "fantasy", "science f
       $first_name = $row['first_name'];
       $middle_name = $row['middle_name'];
       $last_name = $row['last_name'];
-      $series_name = $row['series_name'];
+      //$series_name = $row['series_name'];
 
 
       echo "<tr>
               <td>$title</td>
-              <td>$series</td>
               <td>$first_name $middle_name $last_name </td>
               <td>$genre </td>
               <td>$lexile </td>
