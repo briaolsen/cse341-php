@@ -8,11 +8,8 @@ $currentPage = "search";
 
 $genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
-$query = 'SELECT * FROM book';
+$query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
-
-if (isset($_GET['firstName']) && !empty($_GET['firstName']) || isset($_GET['lastName']) && !empty($_GET['lastName'])) {
-  $query .= ' JOIN author ON book.author_id = author.id WHERE true';
 
   if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
     $query  .= ' AND author.first_name = ?';
@@ -22,10 +19,7 @@ if (isset($_GET['firstName']) && !empty($_GET['firstName']) || isset($_GET['last
     $query  .= ' AND author.last_name = ?';
     $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
   }
-}
-else {
-  $query .= ' WHERE true';
-}
+
 
 if (isset($_GET['title']) && !empty($_GET['title'])) {
   $query  .= ' AND book.title = ?';
@@ -41,7 +35,7 @@ if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
 }
 
 $statement = $db->prepare( $query );
-//$statement->execute( $params );
+$statement->execute( $params );
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
