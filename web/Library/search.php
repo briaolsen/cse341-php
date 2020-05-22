@@ -58,7 +58,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
+  
   <div id="search-form">
     <div class="row">
       <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
@@ -66,6 +66,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-md-6">
         <h1 id="search-heading">Search for a Book</h1>
 
+        <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
         <form>
 
           <div class="form-row top-5">
@@ -128,13 +129,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
-  <?php if(isset($_GET['id']) && count($results) > 0) : ?>
-    <?php $result = current($results); ?>
-    <?php foreach($results as $result) :
-          echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile'];
-        endforeach;
-    ?>
-
   <div id="search-results">
     
     <table class="table table-striped results-table">
@@ -147,8 +141,12 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         </tr>
       </thead>
 
-
-<?php 
+  <?php if(isset($_GET['id']) && count($results) > 0) : ?>
+    <?php  $result = current($results); ?>
+    
+    <?php echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile']; ?>
+    
+<!--
      // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       //  $title = $row['title'];
       //  $lexile = $row['lexile'];
@@ -156,10 +154,13 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
        // $first_name = $row['first_name'];
         //$middle_name = $row['middle_name'];
        // $last_name = $row['last_name'];
-        //$series_name = $row['series_name'];
-elseif ( $results && count($results) > 0 ) :      
-
+        //$series_name = $row['series_name'];    -->  
         
+        <?php elseif ( $results && count($results) > 0 ) : ?>      
+        
+          <?php 
+          if ( $results && count($results) > 0 ) :
+
           foreach($results as $result) : 
 
             echo "<tr>
@@ -170,11 +171,13 @@ elseif ( $results && count($results) > 0 ) :
                   </tr>";
 
           endforeach;
-        
+
+        endif;
       ?>
     </table>
+   <?php endif; ?> 
   </div>
-
+  
 
 
   <!-- Optional JavaScript -->
