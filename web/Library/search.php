@@ -9,7 +9,6 @@ $currentPage = "search";
 $genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
-$results = "";
 $params = [];
 
 if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
@@ -59,10 +58,8 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
+  <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
   <div id="search-form">
-
-
-
     <div class="row">
       <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
 
@@ -126,11 +123,17 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
           <button class="btn btn-dark top-5" type="submit">Search</button>
 
         </form>
+        <?php endif; ?>
       </div>
-
-
     </div>
   </div>
+
+  <?php if(isset($_GET['id']) && count($results) > 0) : ?>
+    <?php $result = current($results); ?>
+    <?php foreach($results as $result) :
+          echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile'];
+        endforeach;
+    ?>
 
   <div id="search-results">
     
@@ -144,8 +147,8 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         </tr>
       </thead>
 
-      <?php
 
+<?php 
      // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       //  $title = $row['title'];
       //  $lexile = $row['lexile'];
@@ -154,14 +157,9 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         //$middle_name = $row['middle_name'];
        // $last_name = $row['last_name'];
         //$series_name = $row['series_name'];
+elseif ( $results && count($results) > 0 ) :      
 
-        $results = current($results);
-
-        foreach($results as $result) :
-          echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile'];
-        endforeach;
-
-        if ($results && count($results) > 0) :
+        
           foreach($results as $result) : 
 
             echo "<tr>
@@ -172,7 +170,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                   </tr>";
 
           endforeach;
-        endif;
+        
       ?>
     </table>
   </div>
