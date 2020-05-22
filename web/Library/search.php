@@ -23,7 +23,7 @@ if (isset($_GET['title']) && !empty($_GET['title'])) {
   $query  .= ' AND book.title = ?';
   $params[] = filter_var( $_GET['title'], FILTER_SANITIZE_STRING);
 }
-if (isset($_GET['genre']) && !empty($_GET['genre'])) {
+if (isset($_GET['genre'])) {
   $query  .= ' AND book.genre = ?';
   $params[] = filter_var( $_GET['genre'], FILTER_SANITIZE_STRING);
 }
