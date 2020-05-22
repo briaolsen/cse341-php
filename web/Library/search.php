@@ -100,7 +100,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
               <select class="custom-select" id="genre" name="genre">
                 <option selected disabled value="">Choose...</option>
                 <?php foreach ($genres as $genre) : ?>
-                  <option value="<?php echo str_replace(' ', '_', $genre); ?>"><?php echo ucwords($genre); ?></option>
+                  <option value="<?php echo $genre; ?>"><?php echo ucwords($genre); ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
