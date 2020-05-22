@@ -41,7 +41,7 @@ if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
 }
 
 $statement = $db->prepare( $query );
-$statement->execute( $params );
+//$statement->execute( $params );
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
