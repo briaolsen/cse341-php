@@ -12,23 +12,23 @@ $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE tru
 $params = [];
 
 if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
-  $query  .= ' AND author.first_name LIKE ?';
+  $query  .= ' AND author.first_name ~* ?';
   $params[] = filter_var( $_GET['firstName'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['lastName']) && !empty($_GET['lastName'])) {
-  $query  .= ' AND author.last_name LIKE ?';
+  $query  .= ' AND author.last_name ~* ?';
   $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['title']) && !empty($_GET['title'])) {
-  $query  .= ' AND book.title LIKE ?';
+  $query  .= ' AND book.title ~* ?';
   $params[] = filter_var( $_GET['title'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['genre'])) {
-  $query  .= ' AND book.genre LIKE ?';
+  $query  .= ' AND book.genre ~* ?';
   $params[] = filter_var( $_GET['genre'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
-  $query  .= ' AND book.lexile LIKE ?';
+  $query  .= ' AND book.lexile ~* ?';
   $params[] = filter_var( $_GET['lexile'], FILTER_SANITIZE_STRING);
 }
 
