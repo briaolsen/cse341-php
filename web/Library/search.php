@@ -165,7 +165,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             echo "<tr>
                     <td>" . $result['title'] . "</td>
-                    <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['first_name'] ."</td>
+                    <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'] ."</td>
                     <td>" . $result['genre'] . "</td>
                     <td>" . $result['lexile'] . "</td>
                   </tr>";
