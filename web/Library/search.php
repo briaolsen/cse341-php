@@ -28,7 +28,7 @@ if (isset($_GET['genre'])) {
   $params[] = filter_var( $_GET['genre'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
-  $query  .= ' AND book.lexile ~* ?';
+  $query  .= ' AND book.lexile = ?';
   $params[] = filter_var( $_GET['lexile'], FILTER_SANITIZE_STRING);
 }
 
