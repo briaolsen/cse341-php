@@ -110,17 +110,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
           </div>
 
-          <div class="form-row top-5">
-            <div class="col">
-              <label for="lexileMin">Lexile Range Min</label>
-              <input type="number" class="form-control" id="lexileMin" name="lexileMin" min="10" step="10">
-            </div>
-            <div class="col">
-              <label for="lexileMax">Lexile Range Max</label>
-              <input type="number" class="form-control" id="lexileMax" name="lexileMax" min="10" step="10">
-            </div>
-          </div>
-
           <button class="btn btn-dark top-5" type="submit">Search</button>
 
         </form>
