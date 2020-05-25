@@ -8,8 +8,6 @@ $currentPage = "library";
 
 $genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
-
-
 ?>
 
 <!doctype html>
@@ -32,7 +30,7 @@ $genres = array("realistic fiction", "historical fiction", "science fiction", "f
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  <h1>Olsen Family Library</h1>
+  <h1 id="library-header">Olsen Family Library</h1>
 
   <div id="search-results">
     <table class="table table-striped results-table">

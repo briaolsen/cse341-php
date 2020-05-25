@@ -34,6 +34,10 @@
   padding: 5%;
 }
 
+#library-header {
+  padding:5%;
+}
+
 #search-results {
   background-color: white;
   padding: 5%;
