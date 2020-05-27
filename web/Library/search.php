@@ -6,34 +6,35 @@ $db = get_db();
 
 $currentPage = "search";
 
-$genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
+$genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
+$grades = array("K" => "BR160L - 150L", "1" => "165L - 570L", "2" => "425L - 795L", "3" => "645L - 985L", "4" => "850L - 1160L", "5" => "950L - 1260L", "6" => "1030L - 1340L", "7" => "1095L - 1401L", "8" => "1155L - 1470L", "9" => "1205L - 1520L", "10" => "1250L - 1570L", "11" => "1295L - 1610L", "12" => "1295L - 1610L");
 
 $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
 
 if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
   $query  .= ' AND author.first_name ~* ?';
-  $params[] = filter_var( $_GET['firstName'], FILTER_SANITIZE_STRING);
+  $params[] = filter_var($_GET['firstName'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['lastName']) && !empty($_GET['lastName'])) {
   $query  .= ' AND author.last_name ~* ?';
-  $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
+  $params[] = filter_var($_GET['lastName'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['title']) && !empty($_GET['title'])) {
   $query  .= ' AND book.title ~* ?';
-  $params[] = filter_var( $_GET['title'], FILTER_SANITIZE_STRING);
+  $params[] = filter_var($_GET['title'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['genre'])) {
   $query  .= ' AND book.genre ~* ?';
-  $params[] = filter_var( $_GET['genre'], FILTER_SANITIZE_STRING);
+  $params[] = filter_var($_GET['genre'], FILTER_SANITIZE_STRING);
 }
 if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
   $query  .= ' AND book.lexile = ?';
-  $params[] = filter_var( $_GET['lexile'], FILTER_SANITIZE_STRING);
+  $params[] = filter_var($_GET['lexile'], FILTER_SANITIZE_STRING);
 }
 
-$statement = $db->prepare( $query );
-$statement->execute( $params );
+$statement = $db->prepare($query);
+$statement->execute($params);
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -58,7 +59,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  
+
   <div id="search-form">
     <div class="row">
       <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
@@ -66,60 +67,70 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-md-6">
         <h1 id="search-heading">Search for a Book</h1>
 
-        <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
-        <form>
+        <?php if (!isset($_GET['id']) || count($results) === 0) : ?>
+          <form>
 
-          <div class="form-row top-5">
-            <div class="col">
-              <label for="firstName">Author First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_GET['firstName'])) ? $_GET['firstName'] : ''); ?>">
+            <div class="form-row top-5">
+              <div class="col">
+                <label for="firstName">Author First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ((isset($_GET['firstName'])) ? $_GET['firstName'] : ''); ?>">
+              </div>
+              <div class="col">
+                <label for="lastName">Author Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo ((isset($_GET['lastName'])) ? $_GET['lastName'] : ''); ?>">
+              </div>
             </div>
-            <div class="col">
-              <label for="lastName">Author Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo ( (isset($_GET['lastName'])) ? $_GET['lastName'] : ''); ?>">
-            </div>
-          </div>
 
-          <div class="form-row top-5">
-            <div class="col">
-              <label for="title">Book Title</label>
-              <input type="text" class="form-control" id="title" name="title" value="<?php echo ( (isset($_GET['title'])) ? $_GET['title'] : ''); ?>">
+            <div class="form-row top-5">
+              <div class="col">
+                <label for="title">Book Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<?php echo ((isset($_GET['title'])) ? $_GET['title'] : ''); ?>">
+              </div>
             </div>
-          </div>
-          <!--
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="series">Series</label>
-          <input type="text" class="form-control" id="series">
-        </div>
-      </div>-->
 
-          <div class="form-row top-5">
-            <div class="col">
-              <label for="genre">Genre</label>
-              <select class="custom-select" id="genre" name="genre">
-                <option selected disabled value="">Choose...</option>
-                <?php foreach ($genres as $genre) : ?>
-                  <option value="<?php echo $genre; ?>"><?php echo ucwords($genre); ?></option>
-                <?php endforeach; ?>
-              </select>
+            <div class="form-row top-5">
+              <div class="col">
+                <label for="genre">Genre</label>
+                <select class="custom-select" id="genre" name="genre">
+                  <option selected disabled value="">Choose...</option>
+                  <?php foreach ($genres as $genre) : ?>
+                    <option value="<?php echo $genre; ?>"><?php echo ucwords($genre); ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="col">
+                <label for="lexile">Lexile</label>
+                <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ((isset($_GET['lexile'])) ? $_GET['lexile'] : ''); ?>">
+              </div>
             </div>
-            <div class="col">
-              <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_GET['lexile'])) ? $_GET['lexile'] : ''); ?>">
-            </div>
-          </div>
 
-          <button class="btn btn-dark top-5" type="submit">Search</button>
+            <button class="btn btn-dark top-5" type="submit">Search</button>
 
-        </form>
+          </form>
         <?php endif; ?>
+
+        <table class="table table-striped results-table">
+          <thead>
+            <tr>
+              <th scope="col">Grade</th>
+              <th scope="col">Min</th>
+              <th scope="col">Max</th>
+            </tr>
+          </thead>
+          <?php foreach ($grades as $grade => $grade_lexile) : ?>
+            <tr>
+              <td><?php echo $grade; ?></td>
+              <td><?php echo $grade_lexile; ?></td>
+            </tr>
+          <?php endforeach; ?>
+          </table>
+
       </div>
     </div>
   </div>
 
   <div id="search-results">
-    
+
     <table class="table table-striped results-table">
       <thead>
         <tr>
@@ -130,12 +141,12 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         </tr>
       </thead>
 
-  <?php if(isset($_GET['id']) && count($results) > 0) : ?>
-    <?php  $result = current($results); ?>
-    
-    <?php echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile']; ?>
-    
-<!--
+      <?php if (isset($_GET['id']) && count($results) > 0) : ?>
+        <?php $result = current($results); ?>
+
+        <?php echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile']; ?>
+
+        <!--
      // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       //  $title = $row['title'];
       //  $lexile = $row['lexile'];
@@ -143,30 +154,30 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
        // $first_name = $row['first_name'];
         //$middle_name = $row['middle_name'];
        // $last_name = $row['last_name'];
-        //$series_name = $row['series_name'];    -->  
-        
-        <?php elseif ( $results && count($results) > 0 ) : ?>      
-        
-          <?php 
-          if ( $results && count($results) > 0 ) :
+        //$series_name = $row['series_name'];    -->
 
-          foreach($results as $result) : 
+      <?php elseif ($results && count($results) > 0) : ?>
+
+        <?php
+        if ($results && count($results) > 0) :
+
+          foreach ($results as $result) :
 
             echo "<tr>
                     <td>" . $result['title'] . "</td>
-                    <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'] ."</td>
+                    <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
-                    <td>" . $result['lexile'] . "</td>
+                    <td>" . $result['lexile'] . "L</td>
                   </tr>";
 
           endforeach;
 
         endif;
-      ?>
+        ?>
     </table>
-   <?php endif; ?> 
+  <?php endif; ?>
   </div>
-  
+
 
 
   <!-- Optional JavaScript -->

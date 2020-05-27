@@ -6,7 +6,7 @@ $db = get_db();
 
 $currentPage = "library";
 
-$genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
+$genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 ?>
 
@@ -46,7 +46,7 @@ $genres = array("realistic fiction", "historical fiction", "science fiction", "f
 
       <?php
 
-      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.middle_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
+      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.last_name FROM book JOIN author ON book.author_id = author.id');
       $statement->execute();
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
