@@ -11,9 +11,9 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
 if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
 
   echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
-  $db->beginTransaction();
+ /* $db->beginTransaction();
   $params = [];
-/*
+
   try {
 
     $query = "SELECT id FROM author WHERE first_name = ? AND last_name = ?";
