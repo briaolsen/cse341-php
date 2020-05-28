@@ -124,9 +124,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       </thead>
 
       <?php if (isset($_GET['id']) && count($results) > 0) : ?>
-        <?php $result = current($results); ?>
-
-        <?php echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile']; ?>
 
       <?php elseif ($results && count($results) > 0) : ?>
 
