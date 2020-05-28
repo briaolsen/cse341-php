@@ -51,9 +51,7 @@ $currentPage = "library";
         $lexile = $row['lexile'];
         $genre = $row['genre'];
         $first_name = $row['first_name'];
-        $middle_name = $row['middle_name'];
         $last_name = $row['last_name'];
-        //$series_name = $row['series_name'];
 
 
         echo "<tr>
