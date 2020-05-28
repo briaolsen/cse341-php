@@ -26,7 +26,7 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
     //if($result)
     //  $author_id = $result['id'];
 
-    echo "Author ID: " . $result;
+    echo "Author ID: " . $result['id'];
 
 
   } catch (Exception $e) {
