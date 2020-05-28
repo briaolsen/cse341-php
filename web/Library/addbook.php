@@ -9,6 +9,29 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
 
 
 if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
+
+  $db->beginTransaction();
+
+  try {
+
+    $query = "SELECT * FROM author WHERE first_name = ? AND last_name = ?)";
+
+    $params[] = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+    $params[] = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+
+    $stm = $db->prepare($query);
+    $result = $stm->execute($params);
+
+    if($result)
+      $author_id = $result['id'];
+
+
+  } catch (Exception $e) {
+    $db->rollback();
+  }
+}
+
+/*
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
@@ -18,7 +41,7 @@ $author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
 $author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
 $author_statement->execute();
 $results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-/*
+
 if (!$results) {
   $author_query ='INSERT INTO author(first_name, last_name) VALUES (:author_first, :author_last);';
   $author_statement = $db->prepare($author_query);
@@ -42,7 +65,7 @@ $author_statement->bindValue(':author_id', $id, PDO::PARAM_STR);
 $author_statement->execute();
 $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
 */
-}
+
 ?>
 
 <!doctype html>
@@ -89,14 +112,14 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
           <div class="form-row top-5">
             <div class="col">
               <label for="title">Book Title</label>
-              <input type="text" class="form-control" id="title" name="title" value="" required>
+              <input type="text" class="form-control" id="title" name="title" value="" >
             </div>
           </div>
 
           <div class="form-row top-5">
             <div class="col">
               <label for="genre">Genre</label>
-              <select class="custom-select" id="genre" name="genre" required>
+              <select class="custom-select" id="genre" name="genre" >
                 <option selected disabled value="">Choose...</option>
                 <?php foreach ($genres as $genre) : ?>
                   <option value="<?php echo $genre; ?>"><?php echo ucwords($genre); ?></option>
@@ -105,7 +128,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col">
               <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="" required>
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="" >
             </div>
           </div>
 
