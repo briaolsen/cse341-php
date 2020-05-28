@@ -21,7 +21,8 @@ if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
     $params[] = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
     $stm = $db->prepare($query);
-    $result = $stm->execute($params);
+    $stm->execute($params);
+    $result = $stm->fetchAll(PDO::FETCH_ASSOC);
 
     //if($result)
     //  $author_id = $result['id'];
