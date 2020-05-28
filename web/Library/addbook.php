@@ -28,7 +28,7 @@ if (!$results) {
   $results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-$id = $results['id'];
+$id = $results['id'];/*
 $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
 $genre = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
 $lexile = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
@@ -41,7 +41,7 @@ $author_statement->bindValue(':genre', $genre, PDO::PARAM_STR);
 $author_statement->bindValue(':author_id', $id, PDO::PARAM_STR);
 $author_statement->execute();
 $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-
+*/
 
 ?>
 
