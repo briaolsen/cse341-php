@@ -153,6 +153,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
     $( "form" ).submit(function( event ) {
 
         event.preventDefault();
+        alert("button pushed");
 
         var data = $("form").serialize();
 
