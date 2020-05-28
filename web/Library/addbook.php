@@ -77,7 +77,6 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-md-6">
         <h1 id="search-heading">Add a Book to the Library</h1>
 
-        <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
         <form>
 
           <div class="form-row top-5">
@@ -133,7 +132,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
         var data = $("form").serialize();
 
         $.ajax({
-            url: "index.php",
+            url: "addbook.php",
             type: "POST",
             data: data,
         });
