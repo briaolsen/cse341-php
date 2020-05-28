@@ -56,7 +56,7 @@ $currentPage = "library";
 
         echo "<tr>
               <td>$title</td>
-              <td>$first_name $middle_name $last_name </td>
+              <td>$first_name $last_name </td>
               <td>$genre </td>
               <td>$lexile </td>
            </tr>";
