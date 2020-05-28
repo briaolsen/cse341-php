@@ -1,5 +1,5 @@
 <?php
-$id = "no id yet";
+
 require_once "database.php";
 $db = get_db();
 
@@ -30,6 +30,7 @@ if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
 
 
   } catch (Exception $e) {
+    echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
   }
 }
