@@ -6,7 +6,7 @@ $db = get_db();
 
 $currentPage = "search";
 
-$genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
+$genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
 $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
@@ -139,7 +139,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <td>" . $result['title'] . "</td>
                     <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
-                    <td>" . $result['lexile'] . "L</td>
+                    <td>" . $result['lexile'] . "</td>
                   </tr>";
 
           endforeach;
