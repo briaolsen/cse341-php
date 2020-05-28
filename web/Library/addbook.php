@@ -10,14 +10,17 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
-$author_query = 'SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last';
-$author_statement = $db->prepare($author_query);
+//$author_query = 'SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last';
+$author_statement = $db->prepare('SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last');
 $author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
 $author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
 $author_statement->execute();
-$author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-$id = $author_results['id'];
+$results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
+$id = $results['id'];
 
+echo "Author ID:" . $id;
+
+/*
 if($id == NULL) {
   $author_query ='INSERT INTO author(first_name, last_name) VALUES (:author_first, :author_last);';
   $author_statement = $db->prepare($author_query);
@@ -40,7 +43,7 @@ $author_statement->bindValue(':genre', $genre, PDO::PARAM_STR);
 $author_statement->bindValue(':author_id', $id, PDO::PARAM_STR);
 $author_statement->execute();
 $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-
+*/
 
 ?>
 
