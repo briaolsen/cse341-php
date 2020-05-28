@@ -113,8 +113,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
           <thead>
             <tr>
               <th scope="col">Grade</th>
-              <th scope="col">Min</th>
-              <th scope="col">Max</th>
+              <th scope="col">Lexile</th>
             </tr>
           </thead>
           <?php foreach ($grades as $grade => $grade_lexile) : ?>
