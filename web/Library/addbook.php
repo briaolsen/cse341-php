@@ -8,8 +8,8 @@ $currentPage = "addbook";
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 
-//if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
-if (isset($_POST['submit'])) {
+if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
+//if (isset($_POST['submit'])) {
 
   echo "Hi";
   //echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
