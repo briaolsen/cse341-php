@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 
-if (isset($_POST['action'] )) {
+if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
@@ -114,6 +114,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
           </div>
 
+          <input type="hidden" name="action" value="add_book" />
           <button class="btn btn-dark top-5" type="submit">Add Book</button>
 
         </form>
