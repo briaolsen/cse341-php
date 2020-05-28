@@ -13,7 +13,7 @@ $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
 //$author_query = 'SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last';
-$author_statement = $db->prepare('SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last');
+$author_statement = $db->prepare('SELECT * FROM author WHERE first_name = :author_first AND last_name = :author_last');
 $author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
 $author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
 $author_statement->execute();
@@ -82,7 +82,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
           <div class="form-row top-5">
             <div class="col">
               <label for="firstName">Author First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_POST['firstName'])) ? $_POST['firstName'] : ''); ?>">
+              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_POST['firstName'])) ? $_POST['firstName'] : ''); ?>" required>
             </div>
             <div class="col">
               <label for="lastName">Author Last Name</label>
@@ -117,7 +117,6 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
           <button class="btn btn-dark top-5" type="submit">Add Book</button>
 
         </form>
-        <?php endif; ?>
       </div>
     </div>
   </div>
