@@ -22,13 +22,16 @@ if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
 
     $stm = $db->prepare($query);
     $stm->execute($params);
-    $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $results = $stm->fetchAll(PDO::FETCH_ASSOC);
 
     //if($result)
     //  $author_id = $result['id'];
+    if ($results && count($results) > 0) :
 
-    echo "Author ID: " . $result['first_name'];
-
+      foreach ($results as $result) :   
+        echo "Author ID: " . $result['id'];
+      endforeach;
+    endif;
 
   } catch (Exception $e) {
     echo $e->getLine() . ': ' . $e->getMessage();
