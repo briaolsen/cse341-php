@@ -3,38 +3,51 @@
 require_once "database.php";
 $db = get_db();
 
-
 $currentPage = "addbook";
 
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
-$query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
-$params = [];
+$author_first = "";
+$author_last = "";
 
-if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
-  $query  .= ' AND author.first_name ~* ?';
-  $params[] = filter_var( $_GET['firstName'], FILTER_SANITIZE_STRING);
+if (isset($_POST['firstName']) && !empty($_POST['firstName'])) {
+  $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 }
-if (isset($_GET['lastName']) && !empty($_GET['lastName'])) {
-  $query  .= ' AND author.last_name ~* ?';
-  $params[] = filter_var( $_GET['lastName'], FILTER_SANITIZE_STRING);
-}
-if (isset($_GET['title']) && !empty($_GET['title'])) {
-  $query  .= ' AND book.title ~* ?';
-  $params[] = filter_var( $_GET['title'], FILTER_SANITIZE_STRING);
-}
-if (isset($_GET['genre'])) {
-  $query  .= ' AND book.genre ~* ?';
-  $params[] = filter_var( $_GET['genre'], FILTER_SANITIZE_STRING);
-}
-if (isset($_GET['lexile']) && !empty($_GET['lexile'])) {
-  $query  .= ' AND book.lexile = ?';
-  $params[] = filter_var( $_GET['lexile'], FILTER_SANITIZE_STRING);
+if (isset($_POST['lastName']) && !empty($_POST['lastName'])) {
+  $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 }
 
-$statement = $db->prepare( $query );
-$statement->execute( $params );
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+$author_query = 'SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last';
+$author_statement = $db->prepare($author_query);
+$author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
+$author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
+$author_statement->execute();
+$author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
+$id = $author_results['id'];
+
+if($id == NULL) {
+  $author_query ='INSERT INTO author(first_name, last_name) VALUES (:author_first, :author_last);';
+  $author_statement = $db->prepare($author_query);
+  $author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
+  $author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
+  $author_statement->execute();
+  $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
+  $id = $author_results['id'];
+}
+
+$title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+$genre = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
+$lexile = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
+
+$author_query ='INSERT INTO book (title, lexile, genre, author_id) VALUES (:title, :lexile, :genre, :author_id);';
+$author_statement = $db->prepare($author_query);
+$author_statement->bindValue(':title', $title, PDO::PARAM_STR);
+$author_statement->bindValue(':lexile', $lexile, PDO::PARAM_STR);
+$author_statement->bindValue(':genre', $genre, PDO::PARAM_STR);
+$author_statement->bindValue(':author_id', $id, PDO::PARAM_STR);
+$author_statement->execute();
+$author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
