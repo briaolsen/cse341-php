@@ -16,7 +16,7 @@ if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
 
   try {
 
-    $query = "SELECT id FROM author WHERE first_name = ? AND last_name = ?";
+    $query = "SELECT * FROM author WHERE first_name = ? AND last_name = ?";
     $params[] = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
     $params[] = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
