@@ -27,7 +27,7 @@ if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
     //if($result)
     //  $author_id = $result['id'];
 
-    echo "Author ID: " . $result['id'];
+    echo "Author ID: " . $result;
 
 
   } catch (Exception $e) {
