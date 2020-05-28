@@ -158,6 +158,9 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
         url: "addbook.php",
         type: "POST",
         data: data,
+        success: function(result) {
+          alert(result);
+        }
       });
     });
   </script>
