@@ -103,6 +103,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
               </div>
             </div>
 
+            <input type="hidden" name="action" value="search_book" />
             <button class="btn btn-dark top-5" type="submit">Search</button>
 
           </form>
@@ -124,7 +125,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       </thead>
 
         <?php
-        if ($results && count($results) > 0) :
+        if ($results && count($results) > 0 && isset($_GET['action']) && $_GET['action'] === 'search_book') :
 
           foreach ($results as $result) :
 
