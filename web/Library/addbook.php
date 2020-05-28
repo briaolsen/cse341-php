@@ -18,9 +18,14 @@ $author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
 $author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
 $author_statement->execute();
 $results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-$id = $results['id'];
 
-echo "Author ID:" . $id;
+if ($results) {
+  $id = $results['id'];
+  echo "Author ID:" . $id;
+} else {
+  echo "Author ID: NA";
+}
+
 }
 /*
 if($id == NULL) {
@@ -81,7 +86,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
 
           <div class="form-row top-5">
             <div class="col">
-              <label for="firstName">Author First Name</label>
+              <label for="firstName">Author First and Middle Name</label>
               <input type="text" class="form-control" id="firstName" name="firstName" value="" required>
             </div>
             <div class="col">
