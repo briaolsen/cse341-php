@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 
-if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
+//if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
 
   echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
   $db->beginTransaction();
@@ -33,7 +33,7 @@ if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
     echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
   }
-}
+//}
 
 /*
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
@@ -143,9 +143,6 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </div>
-
-
-  <?php echo "Author ID: " . $id ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
