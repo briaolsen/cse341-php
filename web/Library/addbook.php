@@ -12,6 +12,7 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
 
   echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
   $db->beginTransaction();
+  $params = [];
 
   try {
 
