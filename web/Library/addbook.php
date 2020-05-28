@@ -18,16 +18,15 @@ if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
 
     $query = "SELECT * FROM author WHERE first_name = ? AND last_name = ?";
     $params[] = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
-
     $params[] = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
     $stm = $db->prepare($query);
     $result = $stm->execute($params);
 
-    if($result)
-      $author_id = $result['id'];
+    //if($result)
+    //  $author_id = $result['id'];
 
-    echo "Author ID: " . $author_id;
+    echo "Author ID: " . $result;
 
 
   } catch (Exception $e) {
