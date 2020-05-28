@@ -7,6 +7,8 @@ $currentPage = "addbook";
 
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
+
+if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
@@ -19,7 +21,7 @@ $results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
 $id = $results['id'];
 
 echo "Author ID:" . $id;
-
+}
 /*
 if($id == NULL) {
   $author_query ='INSERT INTO author(first_name, last_name) VALUES (:author_first, :author_last);';
@@ -108,7 +110,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col">
               <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_POST['lexile'])) ? $_POST['lexile'] : ''); ?>">
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_POST['lexile'])) ? $_POST['lexile'] : ''); ?>" required>
             </div>
           </div>
 
