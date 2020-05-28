@@ -13,6 +13,7 @@ if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
   echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
   $db->beginTransaction();
   $params = [];
+  $id = "";
 
   try {
 
@@ -28,9 +29,8 @@ if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
     //  $author_id = $result['id'];
     if ($results && count($results) > 0) :
 
-      foreach ($results as $result) :   
-        echo "Author ID: " . $result['id'];
-      endforeach;
+      $id = $results[0]['id'];
+      echo $id;
     endif;
 
   } catch (Exception $e) {
