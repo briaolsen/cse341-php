@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 
-if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
+if (isset($_POST['firstName']) && !empty($_POST['firstName'])) {
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
