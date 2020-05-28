@@ -12,6 +12,7 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
   if(isset($_POST['submit'])) {
 
   echo "Hi";
+  echo "<meta http-equiv='refresh' content='0'>";
   //echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
  /* $db->beginTransaction();
   $params = [];
