@@ -17,6 +17,12 @@
           <li class="nav-item <?php if($currentPage == "search") echo "active";?>">
             <a class="nav-link" href="search.php">Search</a>
           </li>
+          <li class="nav-item <?php if($currentPage == "addbook") echo "active";?>">
+            <a class="nav-link" href="addbook.php">Add Book</a>
+          </li>
+          <li class="nav-item <?php if($currentPage == "lexile") echo "active";?>">
+            <a class="nav-link" href="lexile.php">Lexile</a>
+          </li>
         </ul>
       </div>
     </nav>

@@ -40,6 +40,7 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
           <th scope="col">Author</th>
           <th scope="col">Genre</th>
           <th scope="col">Lexile</th>
+          <th scope="col">Grade</th>
         </tr>
       </thead>
 
@@ -56,8 +57,6 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
         $first_name = $row['first_name'];
         $middle_name = $row['middle_name'];
         $last_name = $row['last_name'];
-        //$series_name = $row['series_name'];
-
 
         echo "<tr>
               <td>$title</td>

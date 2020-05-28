@@ -7,7 +7,6 @@ $db = get_db();
 $currentPage = "search";
 
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
-$grades = array("K" => "BR160L - 150L", "1" => "165L - 570L", "2" => "425L - 795L", "3" => "645L - 985L", "4" => "850L - 1160L", "5" => "950L - 1260L", "6" => "1030L - 1340L", "7" => "1095L - 1401L", "8" => "1155L - 1470L", "9" => "1205L - 1520L", "10" => "1250L - 1570L", "11" => "1295L - 1610L", "12" => "1295L - 1610L");
 
 $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
@@ -108,22 +107,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
           </form>
         <?php endif; ?>
-
-        <table class="table table-striped results-table">
-          <thead>
-            <tr>
-              <th scope="col">Grade</th>
-              <th scope="col">Lexile</th>
-            </tr>
-          </thead>
-          <?php foreach ($grades as $grade => $grade_lexile) : ?>
-            <tr>
-              <td><?php echo $grade; ?></td>
-              <td><?php echo $grade_lexile; ?></td>
-            </tr>
-          <?php endforeach; ?>
-          </table>
-
       </div>
     </div>
   </div>
@@ -144,16 +127,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         <?php $result = current($results); ?>
 
         <?php echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile']; ?>
-
-        <!--
-     // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-      //  $title = $row['title'];
-      //  $lexile = $row['lexile'];
-       // $genre = $row['genre'];
-       // $first_name = $row['first_name'];
-        //$middle_name = $row['middle_name'];
-       // $last_name = $row['last_name'];
-        //$series_name = $row['series_name'];    -->
 
       <?php elseif ($results && count($results) > 0) : ?>
 

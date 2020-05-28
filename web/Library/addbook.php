@@ -6,7 +6,7 @@ $db = get_db();
 
 $currentPage = "addbook";
 
-$genres = array("realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
+$genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
@@ -86,13 +86,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
               <input type="text" class="form-control" id="title" name="title" value="<?php echo ( (isset($_GET['title'])) ? $_GET['title'] : ''); ?>" required>
             </div>
           </div>
-          <!--
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="series">Series</label>
-          <input type="text" class="form-control" id="series">
-        </div>
-      </div>-->
 
           <div class="form-row top-5">
             <div class="col">
@@ -118,55 +111,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
-  <div id="search-results">
-    
-    <table class="table table-striped results-table">
-      <thead>
-        <tr>
-          <th scope="col">Book Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Genre</th>
-          <th scope="col">Lexile</th>
-        </tr>
-      </thead>
-
-  <?php if(isset($_GET['id']) && count($results) > 0) : ?>
-    <?php  $result = current($results); ?>
-    
-    <?php echo $result['title'] . $result['first_name'] . $result['middle_name'] . $result['last_name'] . $result['genre'] . $result['lexile']; ?>
-    
-<!--
-     // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-      //  $title = $row['title'];
-      //  $lexile = $row['lexile'];
-       // $genre = $row['genre'];
-       // $first_name = $row['first_name'];
-        //$middle_name = $row['middle_name'];
-       // $last_name = $row['last_name'];
-        //$series_name = $row['series_name'];    -->  
-        
-        <?php elseif ( $results && count($results) > 0 ) : ?>      
-        
-          <?php 
-          if ( $results && count($results) > 0 ) :
-
-          foreach($results as $result) : 
-
-            echo "<tr>
-                    <td>" . $result['title'] . "</td>
-                    <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'] ."</td>
-                    <td>" . $result['genre'] . "</td>
-                    <td>" . $result['lexile'] . "</td>
-                  </tr>";
-
-          endforeach;
-
-        endif;
-      ?>
-    </table>
-   <?php endif; ?> 
-  </div>
-  
 
 
   <!-- Optional JavaScript -->
