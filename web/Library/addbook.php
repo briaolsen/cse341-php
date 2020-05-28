@@ -82,18 +82,18 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
           <div class="form-row top-5">
             <div class="col">
               <label for="firstName">Author First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_POST['firstName'])) ? $_POST['firstName'] : ''); ?>" required>
+              <input type="text" class="form-control" id="firstName" name="firstName" value="" required>
             </div>
             <div class="col">
               <label for="lastName">Author Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo ( (isset($_POST['lastName'])) ? $_POST['lastName'] : ''); ?>" required>
+              <input type="text" class="form-control" id="lastName" name="lastName" value="" required>
             </div>
           </div>
 
           <div class="form-row top-5">
             <div class="col">
               <label for="title">Book Title</label>
-              <input type="text" class="form-control" id="title" name="title" value="<?php echo ( (isset($_POST['title'])) ? $_POST['title'] : ''); ?>" required>
+              <input type="text" class="form-control" id="title" name="title" value="" required>
             </div>
           </div>
 
@@ -109,7 +109,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col">
               <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_POST['lexile'])) ? $_POST['lexile'] : ''); ?>" required>
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="" required>
             </div>
           </div>
 
