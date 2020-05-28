@@ -7,15 +7,8 @@ $currentPage = "addbook";
 
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
-$author_first = "";
-$author_last = "";
-
-if (isset($_POST['firstName']) && !empty($_POST['firstName'])) {
-  $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
-}
-if (isset($_POST['lastName']) && !empty($_POST['lastName'])) {
-  $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
-}
+$author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+$author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
 $author_query = 'SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last';
 $author_statement = $db->prepare($author_query);
@@ -80,23 +73,23 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
         <h1 id="search-heading">Add a Book to the Library</h1>
 
         <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
-        <form>
+        <form method="POST" action="addbook.php">
 
           <div class="form-row top-5">
             <div class="col">
               <label for="firstName">Author First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_GET['firstName'])) ? $_GET['firstName'] : ''); ?>">
+              <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo ( (isset($_POST['firstName'])) ? $_POST['firstName'] : ''); ?>">
             </div>
             <div class="col">
               <label for="lastName">Author Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo ( (isset($_GET['lastName'])) ? $_GET['lastName'] : ''); ?>" required>
+              <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo ( (isset($_POST['lastName'])) ? $_POST['lastName'] : ''); ?>" required>
             </div>
           </div>
 
           <div class="form-row top-5">
             <div class="col">
               <label for="title">Book Title</label>
-              <input type="text" class="form-control" id="title" name="title" value="<?php echo ( (isset($_GET['title'])) ? $_GET['title'] : ''); ?>" required>
+              <input type="text" class="form-control" id="title" name="title" value="<?php echo ( (isset($_POST['title'])) ? $_POST['title'] : ''); ?>" required>
             </div>
           </div>
 
@@ -112,7 +105,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col">
               <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_GET['lexile'])) ? $_GET['lexile'] : ''); ?>">
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="<?php echo ( (isset($_POST['lexile'])) ? $_POST['lexile'] : ''); ?>">
             </div>
           </div>
 
