@@ -9,12 +9,11 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
 
 
 //if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
-  if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
   echo "Hi";
-  echo "<meta http-equiv='refresh' content='0'>";
   //echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
- /* $db->beginTransaction();
+  /* $db->beginTransaction();
   $params = [];
 
   try {
@@ -95,7 +94,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  
+
   <div id="search-form">
     <div class="row">
       <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
@@ -119,14 +118,14 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
           <div class="form-row top-5">
             <div class="col">
               <label for="title">Book Title</label>
-              <input type="text" class="form-control" id="title" name="title" value="" >
+              <input type="text" class="form-control" id="title" name="title" value="">
             </div>
           </div>
 
           <div class="form-row top-5">
             <div class="col">
               <label for="genre">Genre</label>
-              <select class="custom-select" id="genre" name="genre" >
+              <select class="custom-select" id="genre" name="genre">
                 <option selected disabled value="">Choose...</option>
                 <?php foreach ($genres as $genre) : ?>
                   <option value="<?php echo $genre; ?>"><?php echo ucwords($genre); ?></option>
@@ -135,7 +134,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col">
               <label for="lexile">Lexile</label>
-              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="" >
+              <input type="number" class="form-control" id="lexile" name="lexile" min="10" step="10" value="">
             </div>
           </div>
 
@@ -148,27 +147,24 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
+  <script>
+    $("form").submit(function(event) {
 
-    $( "form" ).submit(function( event ) {
+      event.preventDefault();
 
-        event.preventDefault();
+      var data = $("form").serialize();
 
-        var data = $("form").serialize();
-        alert(data);
-
-        $.ajax({
-            url: "addbook.php",
-            type: "POST",
-            data: data,
-        });
+      $.ajax({
+        url: "addbook.php",
+        type: "POST",
+        data: data,
+      });
     });
-
   </script>
 
   <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS 
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 
