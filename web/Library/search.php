@@ -66,7 +66,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
       <div class="col-md-6">
         <h1 id="search-heading">Search for a Book</h1>
 
-        <?php if (!isset($_GET['id']) || count($results) === 0) : ?>
+        
           <form>
 
             <div class="form-row top-5">
@@ -106,7 +106,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             <button class="btn btn-dark top-5" type="submit">Search</button>
 
           </form>
-        <?php endif; ?>
+        
       </div>
     </div>
   </div>
