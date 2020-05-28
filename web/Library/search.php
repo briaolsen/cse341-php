@@ -123,10 +123,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         </tr>
       </thead>
 
-      <?php if (isset($_GET['id']) && count($results) > 0) : ?>
-
-      <?php elseif ($results && count($results) > 0) : ?>
-
         <?php
         if ($results && count($results) > 0) :
 
@@ -134,7 +130,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             echo "<tr>
                     <td>" . $result['title'] . "</td>
-                    <td>" . $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'] . "</td>
+                    <td>" . $result['first_name'] . " " . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
                     <td>" . $result['lexile'] . "</td>
                   </tr>";
@@ -144,7 +140,6 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         endif;
         ?>
     </table>
-  <?php endif; ?>
   </div>
 
 
