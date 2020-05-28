@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 
-if (isset($_POST['firstName']) && !empty($_POST['firstName'])) {
+if (isset($_POST['action'] )) {
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
 $author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
 
@@ -114,7 +114,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
           </div>
 
-          <button class="btn btn-dark top-5" type="submit">Search</button>
+          <button class="btn btn-dark top-5" type="submit">Add Book</button>
 
         </form>
         <?php endif; ?>
@@ -122,11 +122,26 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
 
+    $( "form" ).submit(function( event ) {
+
+        event.preventDefault();
+
+        var data = $("form").serialize();
+
+        $.ajax({
+            url: "index.php",
+            type: "POST",
+            data: data,
+        });
+    });
+
+  </script>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
