@@ -1,5 +1,5 @@
 <?php
-
+$id = "no id yet";
 require_once "database.php";
 $db = get_db();
 
@@ -120,6 +120,9 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </div>
+
+
+  <?php echo "Author ID: " . $id ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
