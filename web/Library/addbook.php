@@ -8,12 +8,12 @@ $currentPage = "addbook";
 $genres = array("adventure", "realistic fiction", "historical fiction", "science fiction", "fantasy", "animal fantasy", "dystopian", "mystery", "horror", "thriller", "educational");
 
 
-//if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
+if ( isset($_POST['action']) && $_POST['action'] === 'add_book' ) {
 
   echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
   $db->beginTransaction();
   $params = [];
-
+/*
   try {
 
     $query = "SELECT id FROM author WHERE first_name = ? AND last_name = ?";
@@ -32,8 +32,8 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
   } catch (Exception $e) {
     echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
-  }
-//}
+  }*/
+}
 
 /*
 $author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
