@@ -78,7 +78,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
         <h1 id="search-heading">Add a Book to the Library</h1>
 
         <?php if(!isset($_GET['id']) || count($results) === 0) : ?>
-        <form method="POST" action="addbook.php">
+        <form>
 
           <div class="form-row top-5">
             <div class="col">
@@ -101,7 +101,7 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
           <div class="form-row top-5">
             <div class="col">
               <label for="genre">Genre</label>
-              <select class="custom-select" id="genre" name="genre">
+              <select class="custom-select" id="genre" name="genre" required>
                 <option selected disabled value="">Choose...</option>
                 <?php foreach ($genres as $genre) : ?>
                   <option value="<?php echo $genre; ?>"><?php echo ucwords($genre); ?></option>
