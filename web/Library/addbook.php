@@ -9,10 +9,8 @@ $genres = array("adventure", "realistic fiction", "historical fiction", "science
 
 
 if ( isset($_POST['action'] ) && $_POST['action'] === 'add_book' ) {
-//if (isset($_POST['submit'])) {
 
-  echo "Hi";
-  //echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
+  echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
   /* $db->beginTransaction();
   $params = [];
 
