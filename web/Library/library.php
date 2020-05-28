@@ -43,7 +43,7 @@ $currentPage = "library";
 
       <?php
 
-      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.last_name FROM book JOIN author ON book.author_id = author.id ORDER BY author.last_name DESC');
+      $statement = $db->prepare('SELECT book.title, book.lexile, book.genre, author.first_name, author.last_name FROM book JOIN author ON book.author_id = author.id ORDER BY author.last_name ASC');
       $statement->execute();
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
