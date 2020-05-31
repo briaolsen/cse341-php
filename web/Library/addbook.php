@@ -82,7 +82,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   <div id="search-form">
     <div class="row">
-      <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2019/02/14/14/38/book-3996723_960_720.jpg" alt="Book with Heart Pages" class="img-fluid align-middle"></div>
+      <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_960_720.jpg" alt="Books on Shelf" class="img-fluid align-middle"></div>
 
       <div class="col-md-6">
         <h1 id="search-heading">Add a Book to the Library</h1>
@@ -124,27 +124,11 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
           </div>
 
           <input type="hidden" name="action" value="add_book" />
-          <button class="btn btn-dark top-5" type="submit">Add Book</button>
+          <button class="btn btn-dark submit-btn" type="submit">Add Book</button>
 
         </form>
       </div>
     </div>
-  </div>
-
-  <div id="results-div">
-   <?php if($dbcommit) {
-     echo     
-   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) +
-   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) +
-   filter_var($_POST['title'], FILTER_SANITIZE_STRING) +
-   filter_var($_POST['lexile'], FILTER_SANITIZE_STRING) +
-   filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
-   }
-   
-   
-   
-   
-   ?>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
