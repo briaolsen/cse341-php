@@ -104,7 +104,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <input type="hidden" name="action" value="search_book" />
-            <button class="btn btn-dark" type="submit">Search</button>
+            <button class="btn btn-dark submitbutton" type="submit">Search</button>
 
           </form>
         
