@@ -49,8 +49,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
     $db->commit();
     $dbcommit = true;
-
-    
   } catch (Exception $e) {
     echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
@@ -89,7 +87,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
         <form>
 
-          <div class="form-row top-5">
+          <div class="form-row">
             <div class="col">
               <label for="firstName">Author First and Middle Name</label>
               <input type="text" class="form-control" id="firstName" name="firstName" value="" required>
@@ -100,14 +98,14 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
             </div>
           </div>
 
-          <div class="form-row top-5">
+          <div class="form-row">
             <div class="col">
               <label for="title">Book Title</label>
               <input type="text" class="form-control" id="title" name="title" value="" required>
             </div>
           </div>
 
-          <div class="form-row top-5">
+          <div class="form-row">
             <div class="col">
               <label for="genre">Genre</label>
               <select class="custom-select" id="genre" name="genre" required>
@@ -123,8 +121,10 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
             </div>
           </div>
 
-          <input type="hidden" name="action" value="add_book" />
-          <button class="btn btn-dark" type="submit">Add Book</button>
+          <div class="form-row">
+            <input type="hidden" name="action" value="add_book" />
+            <button class="btn btn-dark" type="submit">Add Book</button>
+          </div>
 
         </form>
       </div>
