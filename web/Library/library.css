@@ -55,8 +55,8 @@
   float: right;
 }
 
-.submit-btn {
-  margin-top: 10px;
+.submitbutton {
+  padding-top: 20px;
 }
 
 @media only screen and (max-width: 768px) {

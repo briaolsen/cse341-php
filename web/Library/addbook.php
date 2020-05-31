@@ -121,10 +121,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
             </div>
           </div>
 
-          <div class="form-row">
-            <input type="hidden" name="action" value="add_book" />
-            <button class="btn btn-dark" type="submit">Add Book</button>
-          </div>
+          <input type="hidden" name="action" value="add_book" />
+          <button class="btn btn-dark submitbutton" type="submit">Add Book</button>
 
         </form>
       </div>
