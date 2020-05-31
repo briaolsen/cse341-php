@@ -2,6 +2,7 @@
 
 require_once "database.php";
 $db = get_db();
+$dbcommit = false;
 
 $currentPage = "addbook";
 
@@ -15,6 +16,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
   $db->beginTransaction();
   $params = [];
   $author_id = "";
+  $dbcommit = false;
 
   try {
 
@@ -46,47 +48,14 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_result = $book_statement->execute($params);
 
     $db->commit();
+    $dbcommit = true;
+
     
   } catch (Exception $e) {
     echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
   }
 }
-
-/*
-$author_first = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
-$author_last = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
-
-//$author_query = 'SELECT id FROM author WHERE first_name = :author_first AND last_name = :author_last';
-$author_statement = $db->prepare('SELECT * FROM author WHERE first_name = :author_first AND last_name = :author_last');
-$author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
-$author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
-$author_statement->execute();
-$results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-
-if (!$results) {
-  $author_query ='INSERT INTO author(first_name, last_name) VALUES (:author_first, :author_last);';
-  $author_statement = $db->prepare($author_query);
-  $author_statement->bindValue(':author_first', $author_first, PDO::PARAM_STR);
-  $author_statement->bindValue(':author_last', $author_last, PDO::PARAM_STR);
-  $author_statement->execute();
-  $results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-}
-
-$id = $results['id'];
-$title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-$genre = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
-$lexile = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
-
-$author_query ='INSERT INTO book (title, lexile, genre, author_id) VALUES (:title, :lexile, :genre, :author_id);';
-$author_statement = $db->prepare($author_query);
-$author_statement->bindValue(':title', $title, PDO::PARAM_STR);
-$author_statement->bindValue(':lexile', $lexile, PDO::PARAM_STR);
-$author_statement->bindValue(':genre', $genre, PDO::PARAM_STR);
-$author_statement->bindValue(':author_id', $id, PDO::PARAM_STR);
-$author_statement->execute();
-$author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
-*/
 
 ?>
 
@@ -160,6 +129,22 @@ $author_results = $author_statement->fetchAll(PDO::FETCH_ASSOC);
         </form>
       </div>
     </div>
+  </div>
+
+  <div id="results-div">
+   <?php if($dbcommit) {
+     echo     
+   filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) +
+   filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) +
+   filter_var($_POST['title'], FILTER_SANITIZE_STRING) +
+   filter_var($_POST['lexile'], FILTER_SANITIZE_STRING) +
+   filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
+   }
+   
+   
+   
+   
+   ?>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
