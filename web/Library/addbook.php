@@ -48,7 +48,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     if ($book_result && count($book_result) < 1) {
 
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
-      $book_stm = $db->prepare($book_query);
+      $book_stmt = $db->prepare($book_query);
       $book_stmt->execute($params);
       
       $print_result = "You have added " . 
@@ -63,7 +63,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
   } catch (Exception $e) {
     //echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
-    $print_result = "An error occured." . $e->getLine() . ': ' . $e->getMessage();
+    $print_result = 'An error occured.' . $e->getLine() . ': ' . $e->getMessage();
   }
 }
 
