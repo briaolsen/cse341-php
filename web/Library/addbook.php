@@ -2,7 +2,6 @@
 
 require_once "database.php";
 $db = get_db();
-$dbcommit = false;
 
 $currentPage = "addbook";
 
@@ -16,7 +15,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
   $db->beginTransaction();
   $params = [];
   $author_id = "";
-  $dbcommit = false;
 
   try {
 
@@ -38,7 +36,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       $author_id = $db->lastInsertId();
     }
 
-    $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
+    $book_query = 'SELECT * FROM book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
     $params = [];
     $params[] = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
     $params[] = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
@@ -47,8 +45,17 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_statement = $db->prepare($book_query);
     $book_result = $book_statement->execute($params);
 
+    if (count($book_results) === 0) {
+
+    $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
+    $book_statement = $db->prepare($book_query);
+    $book_result = $book_statement->execute($params);
     $db->commit();
-    $dbcommit = true;
+    } else {
+      $book_result = "";
+      $db->rollback();
+    }
+
   } catch (Exception $e) {
     echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
@@ -127,6 +134,12 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         </form>
       </div>
     </div>
+  </div>
+
+  <div id="addition_results">
+    
+    <?php echo $book_results;?>
+  
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
