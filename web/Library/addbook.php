@@ -167,6 +167,10 @@ Trying to add a book to the library.
         data: data,
       });
     });
+
+    $(".btn").mouseup(function(){
+    $(this).blur();
+})
   </script>
 
   <!-- Optional JavaScript -->
