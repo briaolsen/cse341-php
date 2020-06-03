@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
 if (!isset($_SESSION['result'])) {
-  $_SESSION['result'] = "Please add a book to the library.";
+  $_SESSION['result'] = "";
 }
 
 if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
@@ -55,7 +55,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       
       $_SESSION['result'] = "You have added " . 
         filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
-        filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
+        filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . " " .
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
       
     }
@@ -144,7 +144,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   <div id="addition_results">
 
-Trying to add a book to the library.
     <?php
     echo $_SESSION['result'];
     if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
