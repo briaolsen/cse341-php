@@ -138,7 +138,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   <div id="addition_results">
     
-    <?php echo "The book you added is: " . $book_results;?>
+    <?php echo "The book you added is: " . $book_result;?>
   
   </div>
 
