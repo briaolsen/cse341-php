@@ -22,7 +22,7 @@ $currentPage = "library";
   <title>Olsen Home Library</title>
 </head>
 
-<body>
+<body id="search-body">
 
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
