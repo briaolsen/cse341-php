@@ -13,7 +13,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   $db->beginTransaction();
   $params = [];
-
+  $author_id = "";
   try {
 
     $query = "SELECT * FROM author WHERE first_name = ? AND last_name = ?";
@@ -23,7 +23,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $stm = $db->prepare($query);
     $stm->execute($params);
     $results = $stm->fetchAll(PDO::FETCH_ASSOC);
-    $author_id = "";
 
     if ($results && count($results) > 0) {
       $author_id = $results[0]['id'];
@@ -45,7 +44,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_statement->execute($params);
     $book_result = $book_statement->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($book_result && count($book_result) < 1) {
+    //if ($book_result && count($book_result) < 1) {
 
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_stmt = $db->prepare($book_query);
@@ -55,9 +54,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
-    } else {
-      $print_result = "This book is already in the library database.";
-    }
+    //} else {
+    //  $print_result = "This book is already in the library database.";
+    //}
 
     $db->commit();
   } catch (Exception $e) {
