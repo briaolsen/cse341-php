@@ -167,7 +167,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         data: data,
         success: function() {
           location.reload();
-          document.getElementById('addition_results').style.visibility = visible;
+          document.getElementById('addition_results').style.padding = 20;
         }
       });
     });
