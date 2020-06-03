@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
 $book_result = [];
-$print_result = "";
+$print_result = "Please add a book to the library.";
 
 if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
@@ -147,6 +147,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   <div id="addition_results">
 
+Trying to add a book to the library.
     <?php
 
     if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
