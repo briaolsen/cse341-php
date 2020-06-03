@@ -8,7 +8,7 @@ $currentPage = "addbook";
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
 $book_result = [];
-$print_results = "";
+$print_result = "";
 
 if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
@@ -54,15 +54,13 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_statement = $db->prepare($book_query);
       $book_statement->execute($params);
-      $book_result = $book_statement->fetchAll(PDO::FETCH_ASSOC);
       
-      $print_results = "You have added " . 
-        $book_result[0]['title'] . " by " . 
+      $print_result = "You have added " . 
+        filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
     } else {
-      $book_result = [];
-      $print_results = "This book is already in the library's database.";
+      $print_result = "This book is already in the library's database.";
     }
 
     $db->commit();
