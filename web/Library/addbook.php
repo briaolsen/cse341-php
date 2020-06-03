@@ -44,7 +44,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_statement->execute($params);
     $book_result = $book_statement->fetchAll(PDO::FETCH_ASSOC);
 
-    //if ($book_result && count($book_result) < 1) {
+    if ($book_result && count($book_result) < 1) {
 
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_stmt = $db->prepare($book_query);
@@ -54,9 +54,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
-    //} else {
-    //  $print_result = "This book is already in the library database.";
-    //}
+    } else {
+      $print_result = "This book is already in the library database.";
+    }
 
     $db->commit();
   } catch (Exception $e) {
@@ -164,12 +164,15 @@ Trying to add a book to the library.
         url: "addbook.php",
         type: "POST",
         data: data,
+        success: function() {
+          location.reload();
+        }
       });
     });
 
     $(".btn").mouseup(function(){
     $(this).blur();
-})
+});
   </script>
 
   <!-- Optional JavaScript -->
