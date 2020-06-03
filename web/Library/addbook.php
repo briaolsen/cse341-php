@@ -46,8 +46,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_statement->execute($params);
     $book_result = $book_statement->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($book_result && count($book_result) < 1) {
-
+    if ($book_result && count($book_result) > 0) {
+      $_SESSION['result'] = "This book is already in the library database.";
+    } else {
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_stmt = $db->prepare($book_query);
       $book_stmt->execute($params);
@@ -56,8 +57,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
-    } else {
-      $_SESSION['result'] = "This book is already in the library database.";
+      
     }
 
     $db->commit();
