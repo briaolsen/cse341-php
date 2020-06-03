@@ -7,14 +7,15 @@ $currentPage = "addbook";
 
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
-$book_result = "";
-$db_added = false;
+$book_result = [];
+$print_results = "";
 
 if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   $db->beginTransaction();
   $params = [];
-  $book_result = "";
+  $book_result = [];
+  
 
   try {
 
@@ -45,7 +46,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $params[] = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
     $params[] = $author_id;
     $book_statement = $db->prepare($book_query);
-    $book_result = $book_statement->execute($params);
+    $book_statement->execute($params);
+    $book_result = $book_statement->fetchAll(PDO::FETCH_ASSOC);
 
     if ($book_result && count($book_result) < 1) {
 
@@ -53,14 +55,18 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       $book_statement = $db->prepare($book_query);
       $book_result = $book_statement->execute($params);
       $db->commit();
-      $db_added = true;
+      $print_results = "You have added " . 
+        $book_result[0]['title'] . " by " . 
+        filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
+        filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
     } else {
-      $book_result = "";
-      $db->rollback();
+      $book_result = [];
+      $print_results = "This book is already in the library's database.";
     }
   } catch (Exception $e) {
-    echo $e->getLine() . ': ' . $e->getMessage();
+    //echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
+    $print_result = "An error occured." . $e->getLine() . ': ' . $e->getMessage();
   }
 }
 
@@ -142,9 +148,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
     <?php
 
-    if (isset($_POST['action']) && $_POST['action'] === 'add_book' && $db_added === true) {
-
-      echo "The book you added is: " . $book_result;
+    if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
+      echo $print_result;
     }
     ?>
 
