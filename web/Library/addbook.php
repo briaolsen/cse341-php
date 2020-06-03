@@ -53,8 +53,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_statement = $db->prepare($book_query);
-      $book_result = $book_statement->execute($params);
-      $db->commit();
+      $book_statement->execute($params);
+      $book_result = $book_statement->fetchAll(PDO::FETCH_ASSOC);
+      
       $print_results = "You have added " . 
         $book_result[0]['title'] . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
@@ -63,6 +64,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       $book_result = [];
       $print_results = "This book is already in the library's database.";
     }
+
+    $db->commit();
   } catch (Exception $e) {
     //echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
