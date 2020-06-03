@@ -8,13 +8,13 @@ $currentPage = "addbook";
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
 $book_result = "";
+$db_added = false;
 
 if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
-  echo "Author Name " . $_POST['firstName'] . $_POST['lastName'];
   $db->beginTransaction();
   $params = [];
-  $author_id = "";
+  $book_result = "";
 
   try {
 
@@ -46,17 +46,17 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_statement = $db->prepare($book_query);
     $book_result = $book_statement->execute($params);
 
-    if (count($book_result) === 0) {
+    if ($book_result && count($book_result) < 1) {
 
-    $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
-    $book_statement = $db->prepare($book_query);
-    $book_result = $book_statement->execute($params);
-    $db->commit();
+      $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
+      $book_statement = $db->prepare($book_query);
+      $book_result = $book_statement->execute($params);
+      $db->commit();
+      $db_added = true;
     } else {
       $book_result = "";
       $db->rollback();
     }
-
   } catch (Exception $e) {
     echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
@@ -138,9 +138,15 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
   </div>
 
   <div id="addition_results">
-    
-    <?php echo "The book you added is: " . $book_result;?>
-  
+
+    <?php
+
+    if (isset($_POST['action']) && $_POST['action'] === 'add_book' && $db_added === true) {
+
+      echo "The book you added is: " . $book_result;
+    }
+    ?>
+
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
