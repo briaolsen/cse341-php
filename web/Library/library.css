@@ -70,6 +70,14 @@
   width: fit-content;
 }
 
+#lexile-table {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 5%;
+  width: fit-content;
+}
+
 @media only screen and (max-width: 768px) {
   .results-table {
     width: 100%;

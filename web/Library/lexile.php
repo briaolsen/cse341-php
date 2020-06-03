@@ -26,21 +26,22 @@ $grades = array("K" => "BR160L - 150L", "1" => "165L - 570L", "2" => "425L - 795
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-
-  <table class="table table-striped results-table">
-    <thead>
-      <tr>
-        <th scope="col">Grade</th>
-        <th scope="col">Lexile</th>
-      </tr>
-    </thead>
-    <?php foreach ($grades as $grade => $grade_lexile) : ?>
-      <tr>
-        <td><?php echo $grade; ?></td>
-        <td><?php echo $grade_lexile; ?></td>
-      </tr>
-    <?php endforeach; ?>
-  </table>
+  <div id="lexile-table">
+    <table class="table table-striped results-table">
+      <thead>
+        <tr>
+          <th scope="col">Grade</th>
+          <th scope="col">Lexile</th>
+        </tr>
+      </thead>
+      <?php foreach ($grades as $grade => $grade_lexile) : ?>
+        <tr>
+          <td><?php echo $grade; ?></td>
+          <td><?php echo $grade_lexile; ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+  </div>
 
 
   <!-- Optional JavaScript -->
