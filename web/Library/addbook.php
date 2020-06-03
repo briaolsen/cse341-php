@@ -25,6 +25,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $stm = $db->prepare($query);
     $stm->execute($params);
     $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+    $author_id = "";
 
     if ($results && count($results) > 0) {
       $author_id = $results[0]['id'];
