@@ -7,6 +7,8 @@ $currentPage = "addbook";
 
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
+$add_result = "";
+
 if (!isset($_SESSION['result'])) {
   $_SESSION['result'] = "";
 }
@@ -48,6 +50,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
     if ($book_result && count($book_result) > 0) {
       $_SESSION['result'] = "This book is already in the library database.";
+      $add_result = $_SESSION['result'];
     } else {
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_stmt = $db->prepare($book_query);
@@ -57,14 +60,15 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . " " .
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
-      
+        $add_result = $_SESSION['result'];
     }
-
+    $add_result = $_SESSION['result'];
     $db->commit();
   } catch (Exception $e) {
     //echo $e->getLine() . ': ' . $e->getMessage();
     $db->rollback();
     $_SESSION['result'] = 'An error occured.' . $e->getLine() . ': ' . $e->getMessage();
+    $add_result = $_SESSION['result'];
   }
 }
 
@@ -147,13 +151,14 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     <?php
     echo $_SESSION['result'];
     if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
-      echo $_SESSION['result'];
+      echo $add_result;
     }
     ?>
 
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--
   <script>
     $("form").submit(function(event) {
 
@@ -167,7 +172,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
         data: data,
         success: function() {
           location.reload();
-          document.getElementById('addition_results').style.padding = 20;
         }
       });
     });
@@ -175,7 +179,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $(".btn").mouseup(function(){
     $(this).blur();
 });
-  </script>
+  </script>-->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS 
