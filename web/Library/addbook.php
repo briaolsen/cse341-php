@@ -45,7 +45,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $book_statement = $db->prepare($book_query);
     $book_result = $book_statement->execute($params);
 
-    if (count($book_results) === 0) {
+    if (count($book_result) === 0) {
 
     $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
     $book_statement = $db->prepare($book_query);
@@ -138,7 +138,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   <div id="addition_results">
     
-    <?php echo $book_results;?>
+    <?php echo "The book you added is: " . $book_results;?>
   
   </div>
 
