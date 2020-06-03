@@ -7,15 +7,12 @@ $currentPage = "addbook";
 
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
 
-$book_result = [];
 $print_result = "Please add a book to the library.";
 
 if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
   $db->beginTransaction();
   $params = [];
-  $book_result = [];
-  
 
   try {
 
@@ -31,7 +28,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     if ($results && count($results) > 0) {
       $author_id = $results[0]['id'];
     } else {
-
       $author_query = 'INSERT INTO author(first_name, last_name) VALUES (?, ?);';
       $author_statement = $db->prepare($author_query);
       $author_statement->execute($params);
@@ -52,15 +48,15 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     if ($book_result && count($book_result) < 1) {
 
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
-      $book_statement = $db->prepare($book_query);
-      $book_statement->execute($params);
+      $book_stm = $db->prepare($book_query);
+      $book_stmt->execute($params);
       
       $print_result = "You have added " . 
         filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . 
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
     } else {
-      $print_result = "This book is already in the library's database.";
+      $print_result = "This book is already in the library database.";
     }
 
     $db->commit();
@@ -149,7 +145,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
 Trying to add a book to the library.
     <?php
-
+    echo $print_result;
     if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       echo $print_result;
     }
