@@ -37,7 +37,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       $author_id = $db->lastInsertId();
     }
 
-    $book_query = 'SELECT * FROM book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
+    //$book_query = 'SELECT * FROM book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
+    $book_query = 'SELECT * FROM book WHERE title = ? AND lexile = ? AND genre = ? AND author_id = ?';
     $params = [];
     $params[] = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
     $params[] = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
