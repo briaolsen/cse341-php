@@ -60,11 +60,13 @@
 }
 
 #addition_results {
-  font-size: 8vw;
+  font-size: 24px;
   margin-left: auto;
   margin-right: auto; 
   background-color: white;
   text-align: center;
+  width: fit-content;
+  box-shadow: black;
 }
 
 @media only screen and (max-width: 768px) {

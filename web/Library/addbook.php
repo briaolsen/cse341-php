@@ -143,7 +143,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
   </div>
 
   <div id="addition_results">
-Hello
+
     <?php
     echo $_SESSION['result'];
     if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
