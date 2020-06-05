@@ -106,7 +106,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
           <div class="form-row">
             <div class="col">
-              <label for="firstName">Author First and Middle Name</label>
+              <label for="firstName">Author First Name</label>
               <input type="text" class="form-control" id="firstName" name="firstName" value="" required>
             </div>
             <div class="col">

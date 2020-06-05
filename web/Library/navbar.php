@@ -27,9 +27,18 @@
   </div>
 </nav>
 
-<div class="jumbotron jumbotron-fluid bg-white text-center">
+
+<?php 
+
+if ($currentPage != "home") {
+
+  echo '<div class="jumbotron jumbotron-fluid bg-white text-center">
   <div class="container">
     <h1 class="display-4">Olsen Family Library</h1>
     <p class="lead">"Reading is dreaming with eyes wide open."</p>
   </div>
-</div>
+</div>';
+}
+
+
+?>
