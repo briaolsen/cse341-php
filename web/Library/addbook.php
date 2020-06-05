@@ -145,7 +145,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       </div>
     </div>
 
-    <div id="addition_results" class="row">
+    <div id="addition_results">
       <?php echo $_SESSION['result']; ?>
     </div>
 
