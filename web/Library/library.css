@@ -18,8 +18,8 @@
   text-align: center;
   margin: 7%;
   font-weight: bold;
-  color: rgb(26, 12, 7);
-  text-shadow: white 0px 0px 15px;
+  color: white;
+  text-shadow:  rgb(26, 12, 7) 0px 0px 15px;
 }
 
 #home-quote {
@@ -76,7 +76,8 @@
   background-color: white;
   padding: 5%;
   width: fit-content;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 768px) {
