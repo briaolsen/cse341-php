@@ -55,12 +55,12 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       $book_query = 'INSERT INTO book (title, lexile, genre, author_id) VALUES (?, ?, ?, ?);';
       $book_stmt = $db->prepare($book_query);
       $book_stmt->execute($params);
-      
-      $_SESSION['result'] = "You have added " . 
-        filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " . 
+
+      $_SESSION['result'] = "You have added " .
+        filter_var($_POST['title'], FILTER_SANITIZE_STRING) . " by " .
         filter_var($_POST['firstName'], FILTER_SANITIZE_STRING) . " " .
         filter_var($_POST['lastName'], FILTER_SANITIZE_STRING) . " to the library.";
-        $add_result = $_SESSION['result'];
+      $add_result = $_SESSION['result'];
     }
     $add_result = $_SESSION['result'];
     $db->commit();
@@ -139,26 +139,22 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
           </div>
 
           <input type="hidden" name="action" value="add_book" />
-          <button class="btn btn-dark submitbutton" type="submit">Add Book</button>
+          <button class="btn btn-dark submitbutton" type="submit">Add Book</button>\
+          <p id="addition_results">
+            <?php
+            echo $_SESSION['result'];
+            ?>
+          </p>
 
         </form>
       </div>
     </div>
   </div>
 
-  <div id="addition_results">
 
-    <?php
-    echo $_SESSION['result'];
-    if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
-      echo $add_result;
-    }
-    ?>
-
-  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
+
   <script>
     $("form").submit(function(event) {
 
@@ -176,9 +172,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
       });
     });
 
-    $(".btn").mouseup(function(){
-    $(this).blur();
-});
+    $(".btn").mouseup(function() {
+      $(this).blur();
+    });
   </script>
 
   <!-- Optional JavaScript -->
