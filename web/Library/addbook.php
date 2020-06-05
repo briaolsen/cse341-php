@@ -139,12 +139,10 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
           </div>
 
           <input type="hidden" name="action" value="add_book" />
-          <button class="btn btn-dark submitbutton" type="submit">Add Book</button>\
-          <p id="addition_results">
-            <?php
-            echo $_SESSION['result'];
-            ?>
-          </p>
+          <button class="btn btn-dark submitbutton" type="submit">Add Book</button>
+          <span id="addition_results">
+            <?php echo $_SESSION['result']; ?>
+          </span>
 
         </form>
       </div>
