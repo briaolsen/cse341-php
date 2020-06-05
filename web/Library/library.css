@@ -63,11 +63,7 @@
 }
 
 #addition_results {
-  font-size: 24px;
-  margin-left: auto;
-  margin-right: auto; 
-  text-align: center;
-  width: fit-content;
+  font-size: 18px;
 }
 
 #lexile-table {
