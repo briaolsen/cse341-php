@@ -158,7 +158,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!--
+  
   <script>
     $("form").submit(function(event) {
 
@@ -179,7 +179,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
     $(".btn").mouseup(function(){
     $(this).blur();
 });
-  </script>-->
+  </script>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS 
