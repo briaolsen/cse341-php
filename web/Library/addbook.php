@@ -5,7 +5,7 @@ $db = get_db();
 
 $currentPage = "addbook";
 
-$genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
+$genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Paranormal", "Thriller", "Educational");
 
 $add_result = "";
 

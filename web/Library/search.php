@@ -6,7 +6,7 @@ $db = get_db();
 
 $currentPage = "search";
 
-$genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Horror", "Thriller", "Educational");
+$genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Paranormal", "Thriller", "Educational");
 
 $query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
