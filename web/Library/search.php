@@ -118,7 +118,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         if ($results && count($results) > 0 && isset($_GET['action']) && $_GET['action'] === 'search_book') :
 
           echo '<div id="search-results">
-                  <h3 class="align-middle">Table Results</h3>
+                  <h3>Search Results...</h3>
                   <table class="table table-striped results-table">
                     <thead>
                       <tr>
