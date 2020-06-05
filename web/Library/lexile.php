@@ -27,6 +27,8 @@ $grades = array("K" => "BR160L - 150L", "1" => "165L - 570L", "2" => "425L - 795
   include($IPATH . "navbar.php"); ?>
 
   <div id="lexile-table">
+
+    <h3>Lexile Levels</h3>
     <table class="table table-striped results-table">
       <thead>
         <tr>
