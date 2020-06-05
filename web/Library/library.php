@@ -27,7 +27,14 @@ $currentPage = "library";
   <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); ?>
 
-  <h1 id="library-header">Olsen Family Library</h1>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Olsen Family Library</h1>
+      <p class="lead">"Reading is dreaming with eyes wide open."</p>
+    </div>
+  </div>
+
+  <!--<h1 id="library-header">Olsen Family Library</h1>-->
 
   <div id="search-results">
     <table class="table table-striped results-table">
