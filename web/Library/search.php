@@ -114,18 +114,18 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
   <div id="search-results">
 
-    <table class="table table-striped results-table">
-      <thead>
-        <tr>
-          <th scope="col">Book Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Genre</th>
-          <th scope="col">Lexile</th>
-        </tr>
-      </thead>
-
         <?php
         if ($results && count($results) > 0 && isset($_GET['action']) && $_GET['action'] === 'search_book') :
+
+          echo '<table class="table table-striped results-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Book Title</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Genre</th>
+                      <th scope="col">Lexile</th>
+                    </tr>
+                  </thead>';
 
           foreach ($results as $result) :
 
