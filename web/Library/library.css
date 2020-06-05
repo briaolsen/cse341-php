@@ -45,7 +45,6 @@
   background-color: white;
   padding: 5%;
   width: fit-content;
-  text-align: center;
 }
 
 .results-table {
@@ -68,6 +67,7 @@
   margin-left: auto;
   margin-right: auto;
   padding-top:20px;
+  text-align: center;
 }
 
 #lexile-table {
