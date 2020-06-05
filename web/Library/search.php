@@ -112,20 +112,21 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
-  <div id="search-results">
+  
 
         <?php
         if ($results && count($results) > 0 && isset($_GET['action']) && $_GET['action'] === 'search_book') :
 
-          echo '<table class="table table-striped results-table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Book Title</th>
-                      <th scope="col">Author</th>
-                      <th scope="col">Genre</th>
-                      <th scope="col">Lexile</th>
-                    </tr>
-                  </thead>';
+          echo '<div id="search-results">
+                  <table class="table table-striped results-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Lexile</th>
+                      </tr>
+                    </thead>';
 
           foreach ($results as $result) :
 
@@ -138,10 +139,12 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
           endforeach;
 
+          echo "  </table>
+                </div>";
+
         endif;
         ?>
-    </table>
-  </div>
+    
 
 
 
