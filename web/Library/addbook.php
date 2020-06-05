@@ -140,14 +140,16 @@ if (isset($_POST['action']) && $_POST['action'] === 'add_book') {
 
           <input type="hidden" name="action" value="add_book" />
           <button class="btn btn-dark submitbutton" type="submit">Add Book</button>
+          <br>
+          <div id="addition_results">
+            <?php echo $_SESSION['result']; ?>
+          </div>
         </form>
 
       </div>
     </div>
 
-    <div id="addition_results">
-      <?php echo $_SESSION['result']; ?>
-    </div>
+
 
   </div>
 
