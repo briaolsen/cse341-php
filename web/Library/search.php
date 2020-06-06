@@ -8,7 +8,7 @@ $currentPage = "search";
 
 $genres = array("Adventure", "Realistic Fiction", "Historical Fiction", "Science Fiction", "Fantasy", "Animal Fantasy", "Dystopian", "Mystery", "Paranormal", "Thriller", "Educational");
 
-$query = 'SELECT * FROM book JOIN author ON book.author_id = author.id WHERE true';
+$query = 'SELECT book.id, book.title, book.genre, book.lexile, author.first_name, author.last_name FROM book JOIN author ON book.author_id = author.id WHERE true';
 $params = [];
 
 if (isset($_GET['firstName']) && !empty($_GET['firstName'])) {
@@ -139,7 +139,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <td>" . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
                     <td>" . $result['lexile'] . "</td>
-                    <td><a href='delete.php?id=".$result['id.book']."'>Remove</a></td>
+                    <td><a href='delete.php?id=".$result['id']."'>Remove</a></td>
                   </tr>";
 
           endforeach;
