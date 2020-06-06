@@ -127,7 +127,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <th scope="col">Author Last</th>
                         <th scope="col">Genre</th>
                         <th scope="col">Lexile</th>
-                        <th scope="col">Lexile</th>
+                        <th scope="col">Remove</th>
                       </tr>
                     </thead>';
 
@@ -139,7 +139,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <td>" . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
                     <td>" . $result['lexile'] . "</td>
-                    <td><button type='submit'>Remove</button></td>
+                    <td><button type='submit' class='btn btn-dark submitbutton'>Remove</button></td>
                   </tr>";
 
           endforeach;
