@@ -4,7 +4,7 @@ require_once "database.php";
 $db = get_db();
 
 $id = $_GET['id'];
-$book = '<h3>The book ' . $_GET['title'] . ' has been deleted.</h3>';
+$book = '<h3>' . $_GET['title'] . ' has been deleted from the library.</h3>';
 
 try {
   $statement = $db->prepare('DELETE FROM book WHERE id = :id');
@@ -34,13 +34,15 @@ try {
 
 <body id="search-body">
 
+<div id="delete-message">
+
   <?php 
   $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); 
   
   echo $book;
   ?>
-
+</div>
 
 
 
