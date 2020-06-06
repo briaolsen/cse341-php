@@ -6,7 +6,7 @@ $db = get_db();
 $id = $_GET['id'];
 
 
-$statement = $db->prepare('DELETE book WHERE id = :id');
+$statement = $db->prepare('DELETE FROM book WHERE id = :id');
 $statement->bindValue(':id', $id, PDO::PARAM_INT);
 $statement->execute();
 //$results = $statement->fetchAll(PDO::FETCH_ASSOC);
