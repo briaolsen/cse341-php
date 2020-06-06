@@ -20,6 +20,9 @@
       <li class="nav-item <?php if ($currentPage == "addbook") echo "active"; ?>">
         <a class="nav-link" href="addbook.php">Add Book</a>
       </li>
+      <li class="nav-item <?php if ($currentPage == "removebook") echo "active"; ?>">
+        <a class="nav-link" href="removebook.php">Remove Book</a>
+      </li>
       <li class="nav-item <?php if ($currentPage == "lexile") echo "active"; ?>">
         <a class="nav-link" href="lexile.php">Lexile</a>
       </li>
