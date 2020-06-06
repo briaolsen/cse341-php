@@ -21,8 +21,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'remove_book') {
   $authorFirst = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
   $authorLast = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
   $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-  $genre = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
-  $lexile = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
+  $genre = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
+  $lexile = filter_var($_POST['lexile'], FILTER_SANITIZE_STRING);
 
   try {
 
