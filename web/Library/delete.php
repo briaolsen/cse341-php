@@ -4,20 +4,15 @@ require_once "database.php";
 $db = get_db();
 
 $id = $_GET['id'];
+$book = '<h3>The book ' . $_GET['title'] . ' has been deleted.</h3>';
 
-
-$statement = $db->prepare('DELETE FROM book WHERE id = :id');
-$statement->bindValue(':id', $id, PDO::PARAM_INT);
-$statement->execute();
-//$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-//echo 'The book ' . $results['title'] . ' has been deleted.';
-
-
-//$book_stmt = $db->prepare('DELETE book WHERE id = ?');
-//$book_stmt->bind_param('i')
-//$book_stmt->execute($id);
-//header("Location: search.php");
+try {
+  $statement = $db->prepare('DELETE FROM book WHERE id = :id');
+  $statement->bindValue(':id', $id, PDO::PARAM_INT);
+  $statement->execute();
+} catch (Exception $e) {
+  $book = 'An error occured.' . $e->getLine() . ': ' . $e->getMessage();
+}
 
 ?>
 
@@ -43,7 +38,7 @@ $statement->execute();
   $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); 
   
-  echo 'The book ' . $results[0]['title'] . ' has been deleted.';
+  echo $book;
   ?>
 
 
