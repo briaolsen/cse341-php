@@ -6,10 +6,9 @@ $db = get_db();
 $id = $_GET['id'];
 
 
-$query = 'SELECT * FROM book WHERE id = ?';
-
-$statement = $db->prepare($query);
-$statement->execute($id);
+$statement = $db->prepare('SELECT * FROM book WHERE id = :id');
+$statement->bindValue(':id', $id, PDO::PARAM_INT);
+$statement->execute();
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 echo 'The book ' . $results['title'] . ' has been deleted.';
