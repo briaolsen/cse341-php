@@ -139,7 +139,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <td>" . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
                     <td>" . $result['lexile'] . "</td>
-                    <td><a href='delete.php?id=" . $result['id'] . "'><button>Remove</button></a></td>
+                    <td><a href=\'delete.php?id=".$result['id']."\'>Remove</a></td>
                   </tr>";
 
           endforeach;
@@ -149,6 +149,28 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         endif;
         ?>
+
+<script>
+    /*$("form").submit(function(event) {
+
+      event.preventDefault();
+
+      var data = $("form").serialize();
+
+      $.ajax({
+        url: "removebook.php",
+        type: "POST",
+        data: data,
+        success: function() {
+          location.reload();
+        }
+      });
+    });
+
+    $(".btn").mouseup(function() {
+      $(this).blur();
+    });*/
+  </script>
     
 
 
