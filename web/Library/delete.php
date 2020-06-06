@@ -43,7 +43,7 @@ echo 'The book ' . $results['title'] . ' has been deleted.';
   $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
   include($IPATH . "navbar.php"); 
   
-  echo 'The book ' . $results['title'] . ' has been deleted.';
+  echo 'The book ' . $results[0]['title'] . ' has been deleted.';
   ?>
 
 
