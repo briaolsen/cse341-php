@@ -80,7 +80,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'remove_book') {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="library.css">
 
-  <title>Olsen Home Library Add a Book</title>
+  <title>Olsen Home Library Remove a Book</title>
 </head>
 
 <body id="search-body">
@@ -94,7 +94,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'remove_book') {
       <div class="col-md-6"><img src="https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_960_720.jpg" alt="Books on Shelf" class="img-fluid align-middle"></div>
 
       <div class="col-md-6">
-        <h1 id="search-heading">Add a Book to the Library</h1>
+        <h1 id="search-heading">Remove a Book from Library</h1>
 
         <form>
 
@@ -159,7 +159,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'remove_book') {
       var data = $("form").serialize();
 
       $.ajax({
-        url: "addbook.php",
+        url: "removebook.php",
         type: "POST",
         data: data,
         success: function() {
