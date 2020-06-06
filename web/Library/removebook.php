@@ -133,7 +133,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'remove_book') {
           </div>
 
           <input type="hidden" name="action" value="remove_book" />
-          <button class="btn btn-dark submitbutton" type="submit">Add Book</button>
+          <button class="btn btn-dark submitbutton" type="submit">Remove Book</button>
           <br>
           <div id="addition_results">
             <?php echo $_SESSION['result']; ?>
