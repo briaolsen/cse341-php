@@ -39,8 +39,12 @@ echo 'The book ' . $results['title'] . ' has been deleted.';
 
 <body id="search-body">
 
-  <?php $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
-  include($IPATH . "navbar.php"); ?>
+  <?php 
+  $IPATH = $_SERVER["DOCUMENT_ROOT"] . "/Library/";
+  include($IPATH . "navbar.php"); 
+  
+  echo 'The book ' . $results['title'] . ' has been deleted.';
+  ?>
 
 
 
