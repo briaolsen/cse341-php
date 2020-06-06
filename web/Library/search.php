@@ -139,7 +139,7 @@ $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <td>" . $result['last_name'] . "</td>
                     <td>" . $result['genre'] . "</td>
                     <td>" . $result['lexile'] . "</td>
-                    <td><a href=\'delete.php?id=".$result['id']."\'>Remove</a></td>
+                    <td><a href='delete.php?id=".$result['id']."'>Remove</a></td>
                   </tr>";
 
           endforeach;
