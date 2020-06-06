@@ -6,12 +6,12 @@ $db = get_db();
 $id = $_GET['id'];
 
 
-$statement = $db->prepare('SELECT * FROM book WHERE id = :id');
+$statement = $db->prepare('DELETE * FROM book WHERE id = :id');
 $statement->bindValue(':id', $id, PDO::PARAM_INT);
 $statement->execute();
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
+//$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-echo 'The book ' . $results['title'] . ' has been deleted.';
+//echo 'The book ' . $results['title'] . ' has been deleted.';
 
 
 //$book_stmt = $db->prepare('DELETE book WHERE id = ?');
